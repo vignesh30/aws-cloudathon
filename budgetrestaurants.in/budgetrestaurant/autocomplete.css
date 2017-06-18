@@ -1,0 +1,57 @@
+/*
+* jQuery UI CSS Framework
+* Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
+* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+*/
+
+/* Auto suggest*/
+.ui-corner-all-sugg { /*background: #fff;*/}
+
+.ui-autocomplete { position: absolute; cursor: default; }	
+/*.ui-autocomplete-loading { background: white url('../images/loader_nonveg.gif') right center no-repeat; }*/
+.ui-autocomplete-loading { background:url(../images/loader_nonveg.gif) 97% center no-repeat; }
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/* Menu
+----------------------------------*/
+.ui-menu-sugg {list-style:none;padding: 2px;margin: 0;display:block;}
+.ui-menu-sugg .ui-menu-sugg {margin-top: -3px;}
+.ui-menu-sugg .ui-menu-sugg-item {margin:0;padding: 0;zoom: 1;float: left;clear: left;width: 100%;font-family: Arial;font-size: 12px;}
+.ui-menu-sugg .ui-menu-sugg-item a {text-decoration:none;display:block;padding:.2em .4em;line-height:1.5;zoom:1;}
+.ui-menu-sugg .ui-menu-sugg-item a.ui-state-hover-sugg,
+.ui-menu-sugg .ui-menu-sugg-item a.ui-state-active-sugg {font-weight: normal;margin: -1px;}
+
+/* Component containers
+----------------------------------*/
+.ui-widget-sugg { font-family: Verdana,Arial,sans-serif; font-size: 1.1em; }
+.ui-widget-sugg .ui-widget-sugg { font-size: 1em; }
+.ui-widget-sugg input, .ui-widget-sugg select, .ui-widget-sugg textarea, .ui-widget-sugg button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
+.ui-widget-sugg-content { border: 2px solid #ec6e72; background: #ffffff url(images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222; height: 115px; overflow-y:auto; border-radius:0 0 5px 5px; padding:0 9px;}
+.ui-widget-sugg-content a { /*color: #222222;*/ }
+.ui-widget-sugg-header { /*border: 1px solid #aaaaaa; background: #cccccc url(images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x; color: #222222; font-weight: bold;*/ }
+.ui-widget-sugg-header a { /*color: #222222;*/ }
+
+/* Overlays
+----------------------------------*/
+.ui-widget-sugg-overlay { background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.ui-widget-sugg-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-sugg-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default-sugg, .ui-widget-sugg-content .ui-state-default-sugg, .ui-widget-sugg-header .ui-state-default-sugg { border: 1px solid #d3d3d3; background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #555555; }
+.ui-state-default-sugg a, .ui-state-default-sugg a:link, .ui-state-default-sugg a:visited { color: #555555; text-decoration: none; }
+.ui-state-hover, .ui-widget-sugg-content .ui-state-hover, .ui-widget-sugg-header .ui-state-hover, .ui-state-focus, .ui-widget-sugg-content .ui-state-focus, .ui-widget-sugg-header .ui-state-focus { border: 1px solid #999999; background: #dadada url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #212121; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #212121; text-decoration: none; }
+.ui-state-active-sugg, .ui-widget-sugg-content .ui-state-active-sugg, .ui-widget-sugg-header .ui-state-active-sugg { border: 1px solid #aaaaaa; background: #ffffff url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #212121; }
+.ui-state-active-sugg a, .ui-state-active-sugg a:link, .ui-state-active-sugg a:visited { color: #212121; text-decoration: none; }
+.ui-widget-sugg :active { outline: none; }
+
+.ui-state-hover-sugg-sugg, .ui-widget-sugg-content .ui-state-hover-sugg, .ui-widget-sugg-header .ui-state-hover-sugg, .ui-state-focus, .ui-widget-sugg-content .ui-state-focus, .ui-widget-sugg-header .ui-state-focus { border: 1px solid #CDCDCD; background: #F4F4F4; font-weight: normal; color: #212121; }

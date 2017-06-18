@@ -1,0 +1,703 @@
+//------------------------------------------------------------------------
+//Open Faq
+function openFaq(a){
+	var e = document.getElementById(a);
+	if(e.style.display=="none"){
+		var i;
+		var tot=document.getElementById("total").value;
+		for (i=1; i<=tot; i++) {
+			var d = new Array(i);
+			d[i] = "q" + i;
+			if (document.getElementById(d[i])) {
+				document.getElementById(d[i]).style.display="none";
+			} 
+			e.style.display="block";
+		}
+	}
+	else {
+		e.style.display="none"
+	}
+	/*$('.staticContent').hide();
+
+	if( $('#ans'+ansId).is(':visible') ){
+		$('#ans'+ansId).hide();
+	}else{
+		$('#ans'+ansId).show();
+	}*/
+}
+
+//-----------------------------------------------------------------------
+// viewRestaurantNamewise
+function viewRestaurantNamewise(firstname){
+	
+	firstname 		= check_undefined(firstname);
+	
+	$("#resnameDetailsList").load(jssitebaseUrl+"/ajaxAction.php?action=viewRestaurantNamewise", { 'firstname':firstname } );
+	
+}
+
+$(".viewRestAllInner .viewAlpha").click(function() { 
+		$(".viewAlpha").removeClass("active");
+		$(this).addClass("active"); 
+});
+
+//-------------------------------------------------------------------------------------------
+	//Facebook Logout
+	function FacebookLogout(){
+		FB.init({
+			appId   : site_fb_appsid,
+			//appId   : '507121856003184',		
+			status  : true, 
+			cookie  : true,
+			oauth : true, 
+			xfbml   : true
+		});
+		FB.getLoginStatus(function(response) {
+          if (response.authResponse) {
+            FB.logout(function() {
+              customerLogout();
+            });
+            return false;
+          } else {
+            customerLogout();
+            return false;
+          }
+        });
+        //window.location.href = jssitebaseUrl+'/ajaxFile.php?action=customerLogout';
+	}
+	//Customer Logout
+	function customerLogout(){
+        window.location.href = jssitebaseUrl+'/ajaxFile.php?action=customerLogout';
+	}
+	//Restaurant Logout
+	function restaurantLogout(){
+		$.post(jssitebaseUrl+'/ajaxFile.php',{'action':'restaurantLogout'}, function(output){
+			//alert(output);
+			if(output=='logout'){
+				window.location = jssitebaseUrl;
+			}
+		});
+	}
+
+
+
+//------------------------------------------------------------------------------
+//Feedback Validation
+function validateFeedback()
+{
+	//Error Language
+	var err_lang_arr 	   = error_language();
+	$(".errormsg").html('');
+	
+	var feedback       = $.trim($("#feedback").val());
+	
+	if(feedback == ''){
+		$("#errormsgFeed").addClass('errormsg').html(err_lang_arr['site_feedback_empty']);
+		$("#feedback").focus();
+		return false;
+	}
+	else if(feedback != ''){
+		$.post(jssitebaseUrl+'/ajaxFile.php',{"feedback":feedback,"action":"sendFeedback"},function(response){
+			
+			if(response == "insert"){
+				$(".restaurantFeedbackSuccess").html(err_lang_arr['site_feedback_success_msg']);
+				setTimeout(function() {  $(".restaurantFeedbackSuccess").hide(); }, 2000);
+				$("#feedback").val('');
+				window.location.reload();
+			}
+		});
+		return false;
+	}
+	return false;
+}
+//---------------------------------------------------------------------------------------------//
+//Common Method START--------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------
+//Popup Window Close
+function myPopupWindowClose(myPopupWindowId){
+	if(myPopupWindowId == '#guestDetailPop'){
+		guestDetailValid();
+	}else{
+		$('#maska').fadeOut();
+		$(myPopupWindowId).hide();
+	}
+	if(myPopupWindowId	==	'#bookingViewFullDetailsPop'){
+		//$('#maskaa').fadeOut();
+		//$(myPopupWindowId).hide();
+	}
+	$(".neworderscroll").removeClass("fixedpos");
+}
+//Popup Window Open
+function myPopupWindowOpen(myPopupWindowId,myMaskId){
+	
+	//Popup
+		var ismozilla 	= $.browser.mozilla;
+		var isie 		= $.browser.msie;
+		
+		if (document.documentElement.scrollHeight === document.documentElement.clientHeight) {
+			if(isie == true){
+				var maskHeight = $(document).height()-6;
+			}else{
+				var maskHeight = $(document).height()-2;
+			}
+		}else{
+			if(ismozilla == true){
+				var maskHeight = $(document).height();
+			}
+			else{
+				var maskHeight = $(document).height()-2;
+			}
+		}
+		if (document.documentElement.scrollWidth === document.documentElement.clientWidth) {
+			var maskWidth = $(window).width()-2;
+		}else{
+			var maskWidth = $(window).width()-19;
+		}
+				
+		if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ //test for MSIE x.x;
+	 	var ieversion=new Number(RegExp.$1) // capture x.x portion and store as a number
+	 	if (ieversion==7)
+			var maskWidth = $(window).width()-3;
+		}
+		
+		$(myMaskId).css({'width':maskWidth,'height':maskHeight});
+		//$(myPopupWindowId).fadeIn(2000);
+		$(myPopupWindowId).show();
+		var fixDocH = $(document).height();
+		//$(".fixedwindow").addClass("bodyfixed");
+		//$(".fixedwindow.bodyfixed").css("height",fixDocH);
+		/*$(".detailsRight11").css("position","static");
+		$(".searchResultLeft").css("position","static");
+		$(".middleIn").css("position","static");
+		$(".middleIn").css('left','0px');*/
+		var winscrollH = $(window).height();
+		$(".neworderscroll").css("height",winscrollH);
+		$(".neworderscroll").addClass("fixedpos");
+		
+		
+		
+		
+		
+		$(myPopupWindowId).css({"display":"block"});
+		//$(myMaskId).fadeIn(1000);
+		$(myMaskId).show();
+		$(myMaskId).fadeTo("slow",0.5);
+		
+		var windowWidth = document.documentElement.clientWidth;
+		var windowHeight = document.documentElement.clientHeight;
+		var popupHeight = $(myPopupWindowId).height();
+		var popupWidth = $(myPopupWindowId).width();
+		var winH = $(window).height();
+		var winW = $(window).width();
+		
+		var newwintop = $(window).scrollTop() + 100;
+		//centering
+		if(myPopupWindowId == '#orderpop'){
+			
+			//var addtocart_pop_ht = $('.addtocartWrapNew1').height();
+			//alert(addtocart_pop_ht);
+			
+			var topvar =(winH-popupHeight)/ 2 + 'px';
+			var leftvar = (winW-popupWidth)/ 2 + 'px';
+		}else{
+			var topvar 	= windowHeight/2-popupHeight/2 + 'px';
+			var leftvar = windowWidth/2-popupWidth/2 + 'px';
+		}
+		
+		/*alert(windowHeight);
+		alert(popupHeight);
+		alert(topvar);
+		alert(leftvar);*/
+		
+		//$(myPopupWindowId).css({"z-index":"1101","top": windowHeight/2-popupHeight/2,"left": windowWidth/2-popupWidth/2});
+		/*if(myPopupWindowId == '#orderpop'){
+			$(myPopupWindowId).css({"position": "absolute","top": 100,"left": leftvar});
+		}
+		else{
+			$(myPopupWindowId).css({"position": "fixed","top": topvar,"left": leftvar});
+		}*/
+		
+		if(myPopupWindowId == '#orderpop'){
+			$(myPopupWindowId).css({"position": "absolute","top": 100});
+		}
+		else{
+			$(myPopupWindowId).css({"position": "fixed","top": topvar});
+		}
+		/*$(window).scroll(function(){
+			$("#orderpop").css("position","static");						  
+		});*/
+		
+}
+
+//---------------------------------------------------------------------------------------------//
+//AJAX START-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------//
+function getXMLHTTP() { //fuction to return the xml http object                                     
+		var xmlhttp=false;	                                                                        
+		try{                                                                                        
+			xmlhttp=new XMLHttpRequest();                                                           
+		}                                                                                           
+		catch(e)	{		                                                                        
+			try{			                                                                        
+				xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");                                    
+			}                                                                                       
+			catch(e){                                                                               
+				try{                                                                                
+				xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");                                      
+				}                                                                                   
+				catch(e1){                                                                          
+					xmlhttp=false;                                                                  
+				}                                                                                   
+			}                                                                                       
+		}                                                                                                                                                         
+		return xmlhttp;                                                                             
+	}                                                                                               
+var req = getXMLHTTP();
+//---------------------------------------------------------------------------------------------//
+//AJAX END-----------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------// 
+
+//---------------------------------------------------------------------
+function check_undefined(Chk_Var)
+{
+	if(Chk_Var == undefined)
+	{
+		Chk_Var = "";
+	}
+	return Chk_Var;
+}
+
+//------------------------------------------------------------------------------------------------------
+//Guest Details Popup
+function guestDetailPopup(){
+	$("#errormsg").html('');
+	myPopupWindowOpen('#guestDetailPop','#maska');
+}
+function guestDetailValid(){
+	
+	//Error Language
+	var err_lang_arr 	   = error_language();
+	
+	var guest_name 		= $('#guest_name').val();
+	var guest_email 	= $('#guest_email').val();
+	var guest_country 	= $('#guest_country').val();
+	var guest_skypeid	= $('#guest_skypeid').val();
+	
+	if(guest_name == ''){
+		$("#errormsg").addClass('errormsg').html(err_lang_arr['please_enter_your_name']);
+		$("#guest_name").focus();
+		return false;		
+	}
+	else if(guest_email == ''){
+		$("#errormsg").addClass('errormsg').html(err_lang_arr['please_enter_your_email']);
+		$("#guest_email").focus();
+		return false;		
+	}
+	else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(guest_email))){
+	   	$("#errormsg").addClass('errormsg').html(err_lang_arr['please_enter_your_valemail']);
+		$("#guest_email").focus();
+		return false;
+    }
+	else if(guest_country == ''){
+		$("#errormsg").addClass('errormsg').html(err_lang_arr['please_enter_your_country']);
+		$("#guest_country").focus();
+		return false;		
+	}else{
+		$.post(jssitebaseUrl+'/ajaxFile.php',{'guest_name':guest_name,'guest_email':guest_email,'guest_country':guest_country,'guest_skypeid':guest_skypeid,'action':'updateGuestInfo'}, function(output){
+			//alert(output);
+			if(output == 'success'){
+				window.location.href=jssitebaseUrl;
+			}else if(output == 'invalid_domain'){
+				$("#errormsg").addClass('errormsg').html(err_lang_arr['please_enter_your_valemail_add']);
+				return false;
+			}else{
+				$("#errormsg").addClass('errormsg').html(err_lang_arr['error_occured']);
+				return false;
+			}
+			return false;
+		});
+		return false;
+	}
+}
+//--------------------------------------------------------------------------
+//ContactUs Validation
+function contactValidate(){
+	
+	//Error Language
+	var err_lang_arr = error_language();
+	
+	var contactname 			= $.trim($("#contact_name").val());
+	var contactemail 			= $.trim($("#contact_email").val());
+	var contactordernumber 	    = $.trim($("#contact_ordernumber").val());
+	var contactorderdate 		= $.trim($("#contact_orderdate").val());
+	var contactrestaurantname 	= $.trim($("#contact_restaurantname").val());
+	var contactcomments 		= $.trim($("#contact_comments").val());
+	var contactdigit 	    	= $.trim($("#contact_digit").val());
+	var captchcode				= $("#captchcode").html();
+	var nameRegex = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+	
+	$(".errormsg").html('');
+	
+	if(contactname == ''){
+		$("#errormsg").addClass('errormsg').html(err_lang_arr['contact_contactname']);
+		$("#contact_name").focus();
+		return false;		
+	}
+	if(!contactname.match(nameRegex)) {
+	    $("#errormsg").addClass('errormsg').html(err_lang_arr['conatct_valid_contactname']);
+	    $("#contact_name").focus();
+	    return false;
+  	}
+  	
+  	if(contactemail == ''){
+		$("#errormsg").addClass('errormsg').html(err_lang_arr['contact_email']);
+		$("#contact_email").focus();
+		return false;		
+	}
+	if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(contactemail))){
+	   	$("#errormsg").addClass('errormsg').html(err_lang_arr['conatct_valid_contactmail']).show();
+		$("#contact_email").focus();
+		return false;
+    }
+    if(contactdigit == ''){
+		$("#errormsg").addClass('errormsg').html(err_lang_arr['contact_code']);
+		$("#contact_digit").focus();
+		return false;		
+	}
+	if(contactdigit != captchcode){
+		$("#errormsg").addClass('errormsg').html(err_lang_arr['contact_valid_code']);
+		$("#contact_digit").focus();
+		return false;
+	}
+    
+}
+
+//--------------------------------------------------------------------------
+//Gprs Printer Acknowledgement
+function goToAck(orderid)
+{
+	myPopupWindowOpen('#printer_respone','#maska');
+	
+	
+	//ajaxTime.php is called every second to get time from server
+	var refreshId = setInterval(function()
+   	{
+   		$.post(jssitebaseUrl+'/ajaxFile.php',{'action':'check_print_res','orderid':orderid}, function(output){
+   			//alert(output);
+  			if (output=='Y') {
+  				
+                $("#printer_respone").load(jssitebaseUrl+"/ajaxAction.php", {'action':'check_printer_response','orderid':orderid}, function(output){
+     		
+     				//stop the clock when this button is clicked
+					clearInterval(refreshId);
+				});  
+            }
+  		});
+   	}, 10000);
+	
+}
+//Facebook Connect/ Login
+	function callFacebookConnect()
+		{
+				//Error Language
+			var err_lang_arr = error_language();
+			FB.init({
+					appId   : site_fb_appsid,
+					//appId   : '507121856003184',			
+					status  : true, 
+					cookie  : true, 
+					xfbml   : true
+				});
+				
+			//alert("hello");
+			
+			 FB.login(function(response) 
+			 {
+	        	if (response.authResponse) 
+				{
+					//alert("asasasas-->");
+	          		FB.api('/me', function(response) 
+					{
+	          			//alert(response.email);
+	          			if(response.email!="")
+	          			{
+	          				/*alert(response.email);
+	          				alert(response.name);
+	          				alert(response.first_name);
+	          				alert(response.last_name);
+	          				alert(response.username);
+	          				alert(response.gender);
+	          				alert(response.id);return false;*/
+							$.post(jssitebaseUrl+'/ajaxFile.php',{'customerlogemail':response.email, 'customername':response.name, 'action' : 'customerLoginFb'},function(data)
+							{
+								//alert(data);
+								if(data=="loginSuccess")
+								{
+									window.location.href=jssitebaseUrl+"/customerMyaccount.php";
+								}else{
+									alert(err_lang_arr['invalide_email_id']);
+									FB.logout();
+								}
+								
+							});
+						}
+	          		});
+	        	}
+	       	 },{scope: 'email'}); 
+  		}
+//-----------------------------------------------------------------------------------------//
+function callFacebookConnectCheckout(resid,offer,deliverypickup)
+	{
+		//Error Language
+		var err_lang_arr = error_language();
+		FB.init({
+                appId   : site_fb_appsid,
+				//appId   : '507121856003184',			
+				status  : true, 
+				cookie  : true, 
+				xfbml   : true
+			});
+		
+		 FB.login(function(response) 
+		 {
+        	if (response.authResponse) 
+			{
+          		FB.api('/me', function(response) 
+				{
+          			//alert(response.email);
+          			if(response.email!="")
+          			{
+          				/*alert(response.email);
+          				alert(response.name);
+          				alert(response.first_name);
+          				alert(response.last_name);
+          				alert(response.username);
+          				alert(response.gender);
+          				alert(response.id);return false;*/
+						$.post(jssitebaseUrl+'/ajaxFile.php',{'customerlogemail':response.email, 'customername':response.name, 'action' : 'customerLoginFb'},function(data)
+						{
+							//alert(data);
+							if(data=="loginSuccess")
+							{
+								window.location.href=jssitebaseUrl+"/checkout.php?resid="+resid+"&offer="+offer+"&deliverypickup="+deliverypickup;
+							}else{
+								alert(err_lang_arr['fbinvalide_email_id']);
+								FB.logout();
+							}
+							
+						});
+					}
+          		});
+        	}
+       	 },{scope: 'email'}); 
+	}
+	//------------------------------------------------------------------------------------//
+	//Terms and Condition POPUP
+	function termsConditionPopup(){
+		//myPopupWindowOpen('#termsCondition','#maska');
+		jQuery.noConflict();
+		$("#termsCondition").one('shown', function(){
+			var modalTop = $(window).scrollTop() + 30;
+			$(".modal").css("top",modalTop);
+		}).modal("show");
+	}
+	//------------------------------------------------------------------------------------//
+	/*function restaurantForgetPasswordPopup(){
+			
+			//myPopupWindowOpen('#restaurantforgetpop','#maska');
+			$("#restaurantforgetpop").one('shown', function(){
+				var modalTop = $(window).scrollTop() + 30;
+				$("#restaurantforgetpop").css("top",modalTop);
+			}).modal("show");
+			
+			//Form
+			$("#errforgetemail").hide();
+			$("#forgetemail").focus();
+	}*/
+	//Terms and Condition POPUP
+	function loginPopup(){
+		//myPopupWindowOpen('#termsCondition','#maska');
+		jQuery.noConflict();
+		$("#login2").one('shown', function(){
+			var modalTop = $(window).scrollTop() + 30;
+			$(".modal").css("top",modalTop);
+		}).modal("show");
+	}
+	//------------------------------------------------------------------------------------//
+	//ContactUs Validation
+	function contactTouchValidate(){
+		
+		//Error Language
+		var err_lang_arr = error_language();
+		
+		var contactname 		= $.trim($("#contactname").val());
+		var contactemail 		= $.trim($("#contactemailid").val());
+		var contactphone 	    = $.trim($("#contactphone").val());
+		var contactcountry 		= $.trim($("#contactcountry").val());
+		var contactmessage 		= $.trim($("#contactmessage").val());
+		var verifydigit 	    = $.trim($("#verifydigit").val());
+		var captchcode			= $("#capthanumber").html();
+		var nameRegex = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+		
+		$(".errormsg").html('');
+		
+		if(contactname == ''){
+			$("#errormsg").addClass('errClass').html(err_lang_arr['please_enter_name']);
+			$("#contactname").focus();
+			return false;		
+		}
+		if(!contactname.match(nameRegex)) {
+		    $("#errormsg").addClass('errClass').html(err_lang_arr['please_enter_validname']);
+		    $("#contactname").focus();
+		    return false;
+	  	}
+	  	
+	  	if(contactemail == ''){
+			$("#errormsg").addClass('errClass').html(err_lang_arr['please_enter_email']);
+			$("#contactemailid").focus();
+			return false;		
+		}
+		if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(contactemail))){
+		   	$("#errormsg").addClass('errClass').html(err_lang_arr['please_enter_valid_email']).show();
+			$("#contact_email").focus();
+			return false;
+	    }
+	    /*if(contactphone == ''){
+			$("#errormsg").addClass('errClass').html("Please enter phone number");
+			$("#contactphone").focus();
+			return false;		
+		}*/
+		if(contactcountry == ''){
+			$("#errormsg").addClass('errClass').html(err_lang_arr['please_enter_country']);
+			$("#contactcountry").focus();
+			return false;		
+		}
+		if(contactmessage == ''){
+			$("#errormsg").addClass('errClass').html(err_lang_arr['please_enter_message']);
+			$("#contactmessage").focus();
+			return false;		
+		}
+	    if(verifydigit == ''){
+			$("#errormsg").addClass('errClass').html(err_lang_arr['please_enter_verify_number']);
+			$("#verifydigit").focus();
+			return false;		
+		}
+		if(verifydigit != captchcode){
+			$("#errormsg").addClass('errClass').html(err_lang_arr['please_enter_correct_code']);
+			$("#verifydigit").focus();
+			return false;
+		}
+		
+		if(contactname != ''){
+			$.post(jssitebaseUrl+'/ajaxFile.php',{'contactname':contactname,'contactemail':contactemail,'contactphone':contactphone,'contactcountry':contactcountry,'contactmessage':contactmessage,'action':'contactTouchInfo'}, function(output){
+			//alert(output);
+				if(output == 'success'){
+					$("#errormsg").addClass('succmsg2').html(err_lang_arr['your_detail']);
+					setTimeout(function() {  $("#errormsg").hide(); }, 2000);
+					$("#contactname").val('');
+					$("#contactemailid").val('')
+					$("#contactphone").val('');
+					$("#contactcountry").val('');
+					$("#contactmessage").val('');
+					$("#verifydigit").val('');
+				}
+				return false;
+			});
+			return false;
+		}
+		
+	}
+//--------------------------------------------------------------------------------------------------------------
+function getCityListSearch(stateid){
+	//alert("ses--->"+stateid);
+	
+   	$("#showSearchCityListt").load(jssitebaseUrl+"/ajaxAction.php?action=showSearchCity&stateid="+stateid );
+}
+
+ //---------------------------------------------------------------------------------------------
+	//Language Changes
+	function changeLanguage(curlang){
+		//alert("yes");
+var b=jQuery.noConflict();
+		b.post(jssitebaseUrl+'/ajaxFile.php',{'curlang':curlang,'action':'languageChanges'}, function(output){
+			//alert(output);
+            //var answer = output.split("^^");
+            //var answer1 = answer[1].split(".php");
+            //alert(answer1[0]);
+			//if(answer[0]== 'success'){
+			if(output== 'success'){
+				//window.location.href="index.php";
+				if(jssiteuserfriendly == 'N'){
+					//window.location = jssitebaseUrl+"/"+answer1[0];
+                    //window.location = jssitebaseUrl+pathname;
+                   window.location.reload();			
+				}
+				if(jssiteuserfriendly == 'Y'){
+					//window.location = jssitebaseUrl+"/"+answer1[0];
+                    //window.location = jssitebaseUrl+pathname;
+                   window.location.reload();			
+				}
+				else{
+					//window.location = jssitebaseUrl+"/index.php";
+                    //window.location = jssitebaseUrl+"/"+answer[1];
+                    //window.location = jssitebaseUrl+pathname;
+                    window.location.reload();			
+				}
+			}
+		});
+		return false;
+		
+	}
+	
+//-------------delivery cehck that time process need to do--------------	
+	function getUrlParameter(sParam)
+	{
+	    var sPageURL = window.location.search.substring(1);
+	    var sURLVariables = sPageURL.split('&');
+	    for (var i = 0; i < sURLVariables.length; i++) 
+	    {
+	        var sParameterName = sURLVariables[i].split('=');
+	        if (sParameterName[0] == sParam) 
+	        {
+	            return sParameterName[1];
+	        }
+	    }
+	} 
+
+$(document).ready(function(){
+	$("#restaurant_delivery_no").click(function(){
+		//if($('#radio_button').is(':checked') == true)
+		//$("#validate_process").show();
+		$("#validate_process").hide();
+		$("#validate_process_city").hide();
+		$("#validate_process_time").hide();
+		$("#validate_process_charge").hide();
+	});
+	$("#restaurant_delivery_yes").click(function(){
+		//alert("yes");
+		//if($('#radio_button').is(':checked') == true)
+		//$("#validate_process").hide();
+		$("#validate_process").show();
+		$("#validate_process_city").show();
+		$("#validate_process_time").show();
+		$("#validate_process_charge").show();
+	});
+
+	//alert(getUrlParameter('paymentmethod'));
+	/*if(getUrlParameter('paymentmethod') == 'paguelofacil'){
+
+		var TotalPagado = getUrlParameter('TotalPagado');
+		var Fecha = getUrlParameter('Fecha');
+		var Hora = getUrlParameter('Hora');
+		var Tipo = getUrlParameter('Tipo');
+		var Oper = getUrlParameter('Oper');
+		var Usuario = getUrlParameter('Usuario');
+		var Email = getUrlParameter('Email');
+		var Estado = getUrlParameter('Estado');
+		var paymentmethod = getUrlParameter('paymentmethod');
+		
+		//alert(jssitebaseUrl+'/thanks.php?TotalPagado='+TotalPagado+'&Fecha='+Fecha+'&Hora='+Hora+'&Tipo='+Tipo+'&Oper='+Oper+'&Usuario='+Usuario+'&Email='+Email+'&Estado='+Estado+'&paymentmethod=paguelofacil2');
+		parent.location(jssitebaseUrl+'/thanks.php?TotalPagado='+TotalPagado+'&Fecha='+Fecha+'&Hora='+Hora+'&Tipo='+Tipo+'&Oper='+Oper+'&Usuario='+Usuario+'&Email='+Email+'&Estado='+Estado+'&paymentmethod=paguelofacil2');
+	}*/
+});

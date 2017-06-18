@@ -1,0 +1,344 @@
+//Auto Suggestion
+var j = jQuery.noConflict();
+j(function() {
+	
+	//Home Page & Search Result Page Tab
+	j(".searchTab h1").click(function() { //When click open tab
+		
+		$(".searchTab h1").removeClass("active");
+		$(".searchTabContent").hide();
+		
+		$(this).addClass("active"); 
+		var activeTab = $(this).attr("id");
+		$('#'+activeTab+'_content').show();
+	});
+		
+	//Index page & Search Result Area
+		//Area search
+	    
+		//$('#searchfieldArea').autocomplete({source:jssitebaseUrl+'/ajaxFile.php?action=searchArea', minLength:1});
+		//alert("hi");
+	  //$('#searchfieldArea').autocomplete({source:jssitebaseUrl+'/ajaxFile.php?action=searchArea', minLength:1});
+		//Cuisine Search
+		//$('#searchfieldArea_cuisine').autocomplete({source:jssitebaseUrl+'/ajaxFile.php?action=searchArea', minLength:1});
+		//$('#searchfieldCuisine').autocomplete({source:jssitebaseUrl+'/ajaxFile.php?action=searchCuisine', minLength:1});
+		//Restaurant Search
+		//$('#searchfieldArea_restaurant').autocomplete({source:jssitebaseUrl+'/ajaxFile.php?action=searchArea', minLength:1});
+		j('#searchfieldRestaurant').autocomplete({source:jssitebaseUrl+'/ajaxFile.php?action=searchRestaurant', minLength:1});
+	
+	/*j.('#searchMenuItem').on('click', function(){
+
+		if($('#res_id').val().length !== 0){
+
+			var res_id = $('#res_id').val();
+			res_id = check_undefined(res_id);
+			var url = '?action=searchItem$resid='+resid;
+		} 		
+		if($('#Carnes').data('value') == 'Yes'){
+			var nonveg = $('#Carnes').data('value');
+			url += '&nonveg='+nonveg;
+		}else{
+			var nonveg = '';
+		}
+		if($('#Ensaladas').data('value') == 'Yes'){
+			var veg = $('#Ensaladas').data('value');
+			url += '&veg='+veg;
+		}else{
+			var veg = '';
+		}
+		if($('#Spicy').data('value') == 'Yes'){
+			var spicy = $('#Spicy').data('value');
+			url += '&spicy='+spicy;
+		}else{
+			var spicy = '';
+		}
+		var popular  = '';
+		if($("#activeCategory").val().length !== 0){
+
+			var catid = $("#activeCategory").val().trim();
+			url += '&catid='+catid;
+		}
+		alert($("#activeCategory").val().length);
+		alert(url);
+		j('#searchMenuItem').autocomplete({source:jssitebaseUrl+'/ajaxFile.php'+url, minLength:1});
+	});*/
+});
+//----------------------------------------------------
+
+
+/*function searchareaValidate(search_box_val){
+	
+	var langareaval = $("#langareaval").val();
+	//Error Language
+	var err_lang_arr = error_language();
+	
+	var searcharea = $.trim($("#searcharea").val());
+	var searchcity = $.trim($("#searchcity").val());
+	var searchfieldRestaurant = $.trim($("#searchfieldRestaurant").val());
+//	alert(searchfieldRestaurant);
+//	alert(searcharea);
+//	alert(searchcity);
+	if(searcharea == '0' || searcharea == langareaval ){
+		//alert(err_lang_arr['alert_message_indexarea']);
+		//alert(err_lang_arr['select_state']);
+		$("#searcharea").focus();
+		$("#searcharea").select();
+		return false;
+	}
+	else if(searchcity == '0' ){
+		//alert(err_lang_arr['alert_message_indexarea']);
+		//alert(err_lang_arr['select_city']);
+		$("#searchcity").focus();
+		$("#searchcity").select();
+		return false;
+	}
+	else{
+		
+	//	window.location = jssitebaseUrl+'/searchResult.php?searcharea='+searcharea+'&searchcity='+searchcity+'&searchfieldRestaurant='+searchfieldRestaurant;
+		window.location = jssitebaseUrl+'/searchResult.php?searcharea='+searcharea+'&searchcity='+searchcity+'&searchfieldRestaurant='+searchfieldRestaurant;
+		/*if(jssiteuserfriendly == 'Y'){
+			window.location = jssitebaseUrl+'/searchresult/'+searcharea;
+		}else{
+			window.location = jssitebaseUrl+'/searchResult.php?searcharea='+searcharea;
+		}*/
+/*	}
+	return false;
+}*/
+
+function searchareaValidateindex()
+{
+	var err_lang_arr = error_language();
+	var searchtype = j("#searchtype").val();
+	if(searchtype=='quick')
+	{
+		var searcharea = j.trim(j("#searcharea").val());
+		var searchcity = j.trim(j("#searchcity").val());
+		var searchfieldRestaurant = j.trim(j("#searchfieldRestaurant").val());
+		var qry = "";
+	    if(searchcity != '0' && searchcity != langcityval && searchcity != ''){
+	       qry += "&searchcity="+searchcity;
+	    }
+	    if(searchfieldRestaurant != langresval){
+	       qry += "&searchfieldRestaurant="+searchfieldRestaurant;
+	    }
+		window.location = jssitebaseUrl+'/searchResult.php?searcharea='+searcharea+qry;	
+        return false;
+	}
+	if(searchtype=='restaurant')
+	{
+		var res_name = j.trim(j("#res_name").val());
+		var searchstr =j.trim(j("#searchstr").val());
+		var searchdistance1 = j.trim(j("#searchdistance1").val());
+
+		
+		var pickup = j.trim(j("#searchext1").val());
+		var delivery = j.trim(j("#searchext2").val());
+		var table = j.trim(j("#searchext3").val());
+
+
+		var qry = "";
+	    //if(searchcity != '0' && searchcity != langcityval && searchcity != ''){
+	       //qry += "&searchcity="+searchcity;
+	    //}
+	    if(res_name != ''){
+	       qry = "searchfieldRestaurant="+res_name;
+	    } else {
+			qry = "searchfieldRestaurant=";
+		}
+		
+	if(searchstr != ''){
+	       qry += "&streetaddress="+searchstr;
+	    } else{
+			       qry += "&streetaddress=";
+	    }
+
+		if(pickup != ''){
+	       qry += "&ser_pickup=Yes";
+	    }
+		if(delivery != ''){
+	       qry += "&ser_delivery=Yes";
+	    }
+		if(table != ''){
+	       qry += "&ser_booktable=Yes";
+	    }
+		if(searchdistance1!='') {
+			 qry += "&distance="+searchdistance1;
+		}
+
+		window.location = jssitebaseUrl+'/searchResult.php?'+qry;	
+        return false;
+	}
+	if(searchtype=='menu')
+	{
+		var menuiten = j.trim(j("#menuiten").val());
+		var searchadd = j.trim(j("#searchadd").val());
+		var searchdistance2 = j.trim(j("#searchdistance2").val());
+		var pickup = j.trim(j("#searchext1").val());
+		var delivery =j.trim(j("#searchext2").val());
+		var table = j.trim(j("#searchext3").val());
+		if(menuiten=='')
+		{
+			alert(err_lang_arr['res_owner_menunew_name']);
+			return false;
+		}
+		else
+		{
+
+		var qry = "";
+	    //if(searchcity != '0' && searchcity != langcityval && searchcity != ''){
+	       //qry += "&searchcity="+searchcity;
+	    //}
+	    if(menuiten != ''){
+	       qry = "menuiten="+menuiten;
+	    } 
+		if(pickup != ''){
+	       qry += "&ser_pickup=Yes";
+	    }
+		if(delivery != ''){
+	       qry += "&ser_delivery=Yes";
+	    }
+		if(table != ''){
+	       qry += "&ser_booktable=Yes";
+	    }
+			if(searchadd != ''){
+	       qry += "&streetaddress="+searchadd;
+	    } 
+		if(searchdistance2!='') {
+			 qry += "&distance="+searchdistance2;
+		}
+
+		window.location = jssitebaseUrl+'/searchResult.php?'+qry;	
+        return false;
+		}
+	}
+
+	//alert(searchtype);
+
+	   // var res_name = j("#res_name").val();
+			//var searcharea = j.trim(j("#searcharea").val());
+
+
+
+			//var searcharea = $.trim($("#searcharea").val());
+	//var searchcity = $.trim($("#searchcity").val());
+
+		//alert(res_name);
+
+	     //window.location = jssitebaseUrl+'/searchResult.php?searchfieldRestaurant='+res_name;	
+        //alert(window.location);
+		//window.location = jssitebaseUrl+'/searchResult.php?searcharea='+searcharea+'&searchcity='+searchcity+'&searchfieldRestaurant='+searchfieldRestaurant;	
+	    //return false;
+}
+
+function searchareaValidate(search_box_val){
+	
+	
+	//Error Language
+	var err_lang_arr = error_language();
+    
+    var langareaval = $("#langareaval").val();
+    var langresval  = $("#langresval").val();    
+    var langcityval  = $("#langcityval").val();
+	
+	var searcharea = $.trim($("#searcharea").val());
+	var searchcity = $.trim($("#searchcity").val());
+	var searchfieldRestaurant = $.trim($("#searchfieldRestaurant").val());
+	//alert(searchcity);
+	/*alert(searcharea);
+	alert(searchcity);
+    alert(searchfieldRestaurant);
+    alert("<br>lan->"+langresval);*/
+    var qry = "";
+	if(searcharea == '0' || searcharea == langareaval ){
+		//alert(err_lang_arr['alert_message_indexarea']);
+		//alert(err_lang_arr['select_state']);
+		$("#searcharea").focus();
+		$("#searcharea").select();
+	//	return false;
+	}
+	else{
+	    var qry = "";
+	    if(searchcity != '0' && searchcity != langcityval && searchcity != ''){
+	       qry += "&searchcity="+searchcity;
+	    }
+	    if(searchfieldRestaurant != langresval){
+	       qry += "&searchfieldRestaurant="+searchfieldRestaurant;
+	    }
+        
+        //alert(qry);
+        //return false;
+        window.location = jssitebaseUrl+'/searchResult.php?searcharea='+searcharea+qry;	
+        //alert(window.location);
+		//window.location = jssitebaseUrl+'/searchResult.php?searcharea='+searcharea+'&searchcity='+searchcity+'&searchfieldRestaurant='+searchfieldRestaurant;	
+	    return false;
+	}
+
+}
+//----------------------------------------------------
+//Search Option 
+function searchareaValidate_bc(search_box_val){
+	//alert(search_box_val);
+	
+	var langareaval = $("#langareaval").val();
+	//Error Language
+	var err_lang_arr = error_language();
+	
+	var searcharea = $.trim($("#searchfieldArea").val());
+	
+	if(searcharea == '' || searcharea == langareaval ){
+		alert(err_lang_arr['alert_message_indexarea']);
+		$("#searchfieldArea").focus();
+		$("#searchfieldArea").select();
+		return false;
+	}
+}
+function searchcuisineValidate(search_box_val,search_box_val_area){
+	//alert(search_box_val);
+	//alert(search_box_val_area);
+	
+	var langcuival  = $("#langcuisineval").val();
+	var langareaval = $("#langareaval").val();
+	//Error Language
+	var err_lang_arr = error_language();
+	
+	var searcharea	  = $.trim($("#searchfieldArea_cuisine").val());
+	var searchcuisine = $.trim($("#searchfieldCuisine").val());
+	
+	if(searcharea == '' || searcharea == langareaval){
+		alert(err_lang_arr['alert_message_indexarea']);
+		$("#searchfieldArea_cuisine").focus();
+		$("#searchfieldArea_cuisine").select();
+		return false;
+	}
+	if(searchcuisine == '' || searchcuisine == langcuival){
+		alert(err_lang_arr['alert_message_indexcuisine']);
+		$("#searchfieldCuisine").focus();
+		$("#searchfieldCuisine").select();
+		return false;
+	}
+}
+function searchrestaurantValidate(search_box_val,search_box_val_area){
+	//alert(search_box_val);
+	//alert(search_box_val_area);
+	var langrestval  = $("#langrestval").val();
+	var langareaval  = $("#langareaval").val();
+	
+	//Error Language
+	var err_lang_arr = error_language();
+	
+	var searcharea_restaurant = $.trim($("#searchfieldArea_restaurant").val());
+	var searchrest = $.trim($("#searchfieldRestaurant").val());
+	
+	if(searcharea_restaurant == '' || searcharea_restaurant == langareaval){
+		alert(err_lang_arr['alert_message_indexarea']);
+		$("#searchfieldArea_restaurant").focus();
+		$("#searchfieldArea_restaurant").select();
+		return false;
+	}
+	if(searchrest == '' || searchrest == langrestval){
+		alert(err_lang_arr['alert_message_indexresname']);
+		$("#searchfieldRestaurant").focus();
+		$("#searchfieldRestaurant").select();
+		return false;
+	}
+}

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://www.foodorderingscript.com/demo-new/ -->
+<html lang="es">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		 	<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Food Delivery | Restaurant Takeout | Restaurant Dine In | Eat Smart</title>
+	<meta name="description" content="">
+	<meta name="Keywords" content="">
+	<!-- Bootstrap -->
+	<link href="./budgetrestaurant/smp_responsive.css" type="text/css" rel="stylesheet">
+	<link href="./budgetrestaurant/bootstrap.min.css" type="text/css" rel="stylesheet">
+	<link href="./budgetrestaurant/general.css" type="text/css" rel="stylesheet">
+	<link href="./budgetrestaurant/stylee.css" type="text/css" rel="stylesheet">
+	
+	<link href="./budgetrestaurant/tipTip.css" type="text/css" rel="stylesheet">
+	<!--<link href="http://www.foodorderingscript.com/demo-new/theme/default/css/general.css" type="text/css" rel="stylesheet">-->
+	<link href="./budgetrestaurant/jMyCarousel.css" type="text/css" rel="stylesheet">
+	<link href="./budgetrestaurant/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./budgetrestaurant/font-awesome.min(1).css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<link rel="stylesheet" type="text/css" href="./budgetrestaurant/autocomplete.css">
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+     
+    <![endif]-->
+
+
+	<link rel="stylesheet" type="text/css" href="./budgetrestaurant/jquery.bxslider.css"> 
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.41.min.js"></script>
+	<script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+	<script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+	<script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+	<script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+	<script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+	<script type="text/javascript" src="lib/url-template/url-template.js"></script>
+	<script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+	<script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+	<script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+	<script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+	<script type="text/javascript" src="apigClient.js"></script>
+
+	<style type="text/css">
+		::-webkit-input-placeholder {
+			color: #919191;
+		}
+		
+		:-moz-placeholder {
+			/* Firefox 18- */
+			color: #393434;
+		}
+		
+		::-moz-placeholder {
+			/* Firefox 19+ */
+			color: #393434;
+		}
+		
+		:-ms-input-placeholder {
+			color: #919191;
+		}
+	</style>
+
+	
+	<style>
+		.pick1 {
+			background: rgb(201, 41, 37);
+			color: #fff;
+		}
+		
+		.nowonlydiv {
+			display: none;
+		}
+    .location-box
+    {
+      position: relative;display: block;float: left;width: 75%;margin-left: 35px;
+    }
+    .location-img
+    {
+      position: absolute;right: 10px;top: 10px;cursor: pointer;
+    }
+    @media (max-width: 1228px)
+    {
+      .location-box{width: 100%;margin-left: 0px;}
+      .location-img{top: 11px;}
+    }
+	.position-fixed{    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+h1.text-custom-style {
+    text-shadow: 0px 2px #272727;
+    font-family: sans-serif !important;
+    font-size: 40px !important;
+    color: #FEFDFD;
+    word-wrap: break-word;
+    line-height: normal;
+    letter-spacing: normal;
+}
+	</style>
+	 
+
+	
+</head>
+
+<body>
+
+
+	
+<style type="text/css">
+	.sitelogo {
+		position: absolute;
+		top: -10px;
+		width:196px;
+		height: 90px;
+	}
+	
+	.sitelogo1 {
+		position: absolute;
+		top: 5px;
+	}
+	
+	@media (max-width: 767px) {
+		.sitelogo {
+			position: relative;
+		}
+		.sitelogo1 {
+			height: 55px;
+		}
+	}
+</style>
+
+
+
+
+<header style="display: block;">
+	<div class="container midpaddR0">
+		<div class="col-md-12 col-xs-12 col-sm-12 midpaddR0">
+			<div class="row">
+				<div class="col-md-4 col-sm-4 col-xs-12 txtcen midpaddL0" style="display: inline-flex;">
+					<a href="http://www.foodorderingscript.com/demo-new"><img src="./budgetrestaurant/logo_header.png" class="sitelogo" style="" alt="Logo">
+          	<div class="clearfix"></div>
+          </a>
+				</div>
+					
+			</div>
+
+
+		</div>
+	</div>
+</header>
+<div style="height:65px" class="nowonlydiv"></div>
+
+
+<style>
+	.closeinctive {
+		display: none !important;
+		transition: all 2s ease-in-out;
+	}
+	
+	.openactive {
+		display: block !important;
+		transition: all 2s ease-in-out;
+	}
+	
+	.popdiv {
+		position: absolute;
+		top: 44px;
+		z-index: 999;
+		right: 70;
+	}
+	
+	.pops_divs {
+		float: left;
+		/* width: 300px; */
+	}
+	
+	.dropdown-menu1 li a:hover {
+		background: none repeat scroll 0% 0% #FE4719 !important;
+		color: #fff important;
+	}
+	
+	.pop_mid {
+		background: #fff;
+		float: left;
+		height: auto !important;
+		padding: 15px;
+		width: 230px;
+		border-radius: 5px;
+		box-shadow: 0px -3px 30px rgba(51, 51, 51, 0.15);
+		border: 1px solid rgba(204, 204, 204, 0.55);
+	}
+	
+	.pop_btm {
+		background: #fff;
+		float: left;
+		height: 20px;
+		width: 260px;
+		display: none;
+	}
+	
+	.pop_mid>p {
+		color: #939393;
+		font-size: 16px;
+		padding: 0 0;
+		margin: 0px;
+	}
+	
+	.sprt_line {
+		border-bottom: 1px solid #DEDEDE;
+		float: left;
+		width: 100%;
+	}
+	
+	.pop_mid span {
+		color: #939393;
+		float: left;
+		font-size: 14px;
+		padding: 10px 0;
+		clear: both;
+		text-align: left;
+	}
+	
+	.pop_text {
+		width: 100%;
+		height: 40px;
+		background: #fafafa !important;
+		border: none;
+		border-radius: 4px;
+		color: #939393;
+		font-size: 15px;
+		box-shadow: 0px 0px 1px rgba(51, 51, 51, 0.36);
+	}
+	.trcknw {
+		padding: 9px 0px 9px 0px !important;
+		color: #fff !important;
+		font-size: 18px !important;
+		text-transform: uppercase;
+		background: #4CCE4A;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		float: left;
+		width: 100%;
+		margin: 14px 0px 0px 0;
+		text-align: center !important;
+	}
+	
+	header .main-header nav.main-nav ul li {
+		padding: 0px;
+	}
+	.linkimg img {
+		width: auto !important;
+	}
+	
+	.navbar {
+		border: 0px solid transparent;
+		background: rgb(191, 6, 6);
+		margin: auto;
+		min-height: 95px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		position: fixed;
+		top: -110px;
+		transition: top 0.4s ease 0s;
+		z-index: 2147483647;
+		border-bottom: 1px solid #fff !important
+	}
+	
+	.open {
+		top: 0px;
+	}
+	
+	header {
+		position: absolute;
+		right: 0;
+		left: 0;
+		z-index: 99999;
+		height: 100px;
+		background:transparent;
+		border-bottom: 0px solid #fff !important;
+		padding: 7px 0;
+	}
+	.tagline{padding-top:0px;}
+	.logo {
+		float: left;
+		margin: 0px 0px 0px;
+	}
+	
+	.navbar-toggle .icon-bar {
+		background-color: #fff;
+	}
+	
+	.custom-padding-0 {
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
+	
+	.nav>li>a:focus,
+	.nav>li>a:hover {
+		text-decoration: none;
+		background-color: transparent;
+	}
+	
+	.header-btn1x {
+		padding: 8px 12px;
+		border: 1px solid #F5861F;
+		color: #F5861F;
+		background: transparent;
+		border-radius: 4px;
+		-webkit-transition: .2s;
+		transition: .2s;
+		font-family: 'Quicksand', sans-serif;
+	}
+	
+	.header-btn1x:hover {
+		padding: 8px 12px;
+		border: 1px solid #F5861F;
+		color: white;
+		background: #F5861F;
+		border-radius: 4px;
+		-webkit-transition: .2s;
+		transition: .2s;
+		font-family: 'Quicksand', sans-serif;
+	}
+	
+	.header-btn2x {
+		padding: 8px 12px;
+		border: 1px solid rgb(112, 203, 206);
+		background: rgb(112, 203, 206);
+		border-radius: 4px;
+		font-family: 'Quicksand', sans-serif;
+	}
+	
+	.header-btn3x {
+		padding: 8px 12px;
+		border: 1px solid white;
+		background: transparent;
+		border-radius: 4px;
+		color: white;
+		opacity: .6;
+		-webkit-transition: .2s;
+		transition: .2s;
+		font-family: 'Quicksand', sans-serif;
+	}
+	
+	.header-btn3x:hover {
+		border: 1px solid #FA6604;
+		background-color: #FA6604;
+		color: white;
+		opacity: 1;
+	}
+	
+	.header-btn3x:focus {
+		border: 1px solid #FA6604;
+		background-color: #FA6604;
+		color: white;
+		opacity: 1;
+	}
+	
+	.header-btn4x {
+		padding: 8px 12px;
+		border: 1px solid rgb(112, 203, 206);
+		background: white;
+		border-radius: 4px;
+		color: rgb(112, 203, 206);
+		-webkit-transition: .2s;
+		transition: .2s;
+		font-family: 'Quicksand', sans-serif;
+	}
+	
+	.lang {
+		padding: 0px;
+		height: 39px;
+		min-width: auto;
+		width: auto;
+	}
+	
+	.nav>li>a {
+		position: relative;
+		display: block;
+		padding: 3px 5px;
+	}
+	
+	.lang .dropup .btn {
+		width: 100%;
+		color: black;
+		text-align: left;
+		position: relative;
+		line-height: 24px;
+		border: 2px solid #059CD8;
+	}
+	
+	.lang .dropup li a {
+		line-height: 25px;
+	}
+	
+	.lang_flag {
+		float: left;
+		margin-right: 3px;
+		line-height: 26px;
+		width: 35px;
+	}
+	
+	.lang .dropup .divider {
+		margin: 5px 0px !important;
+	}
+	
+	.navbar-header {
+		float: left;
+	}
+	
+	.get-app1 {
+		margin-top: 11px;
+	}
+	
+	.dropdown-menu1 .divider1 {
+		margin: 1px 0px;
+		overflow: hidden;
+	}
+	
+	.midpaddR0 {
+		margin-top: 7px;
+		margin-bottom: 7px
+	}
+	
+	.get-span {
+		color: #FFF;
+		line-height: 25px;
+		margin-right: 0px;
+	}
+	
+	.get-app1 ul {
+		display: inline-block;
+		vertical-align: top;
+		margin: 0px;
+		padding: 0px;
+		margin-right: 5px;
+	}
+	
+	ul.app-links1 li {
+		list-style: outside none none;
+		display: inline-block;
+	}
+	
+	ul.app-links li {
+		list-style: outside none none;
+		display: inline-block;
+	}
+	
+	ul.app-links li a.store-link {
+		color: #FFF;
+		font-size: 1.5em;
+		margin-right: 6px;
+		margin-top: 0px;
+	}
+	
+	.get-span1 {
+		color: #F5861F;
+		line-height: 25px;
+		margin-right: 0px;
+		font-family: "Quicksand", sans-serif;
+	}
+	
+	ul.app-links1 li a.store-link1 {
+		color: #F5861F;
+		font-size: 1.5em;
+		margin-right: 6px;
+		margin-top: 0px;
+	}
+	
+	.mgtp {
+		margin-top: 20px;
+		
+	}
+	
+	.mgtp12 {
+		margin-top: 5px;
+	}
+	
+	@media(max-width:1000px) {
+		.navbar-header {
+			width: 100%;
+			margin: 0px !important
+		}
+		.restrac {
+			display: none
+		}
+		.txtcen {
+			text-align: center !important
+		}
+	}
+	@media(max-width:768)
+	{
+		.sitelogo{margin:0 auto;}
+	}
+</style>
+
+<link rel="stylesheet" href="./budgetrestaurant/font-awesome.min(2).css">
+	<!-- .search-form -->
+	<!--////////////////////
+  /// Search Box End ////
+  ////////////////////-->
+	<div class="slider-wrapper ">
+		<section id="home" class="banner-row">
+			<div class="banner190 tagline">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="item active left"></div>
+						<div class="item next left"></div>
+						<div class="item"></div>
+						<div class="item"></div>
+					</div>
+				</div>
+				<div class="banner-in block-texts">
+					<div class="book-box ">
+						<link rel="stylesheet" type="text/css" href="./budgetrestaurant/front.css">
+						<div class="container mobile-search">
+							<div class="row bb">
+								<div class="content">
+									<div><img src="./budgetrestaurant/line.png" alt="line"><span>HUNGRY!</span><img src="./budgetrestaurant/line.png" alt="line"></div>
+									<div class="clearfix"></div>
+									<div>SEE WHO DELIVERS IN YOUR NEIGHBORHOOD</div>
+									<div class="row">
+
+										<span class="arrow-up"></span>
+										<select class="palce_country" style="-webkit-appearance: none;-moz-appearance: none;" name="searcharea" id="searcharea1" onchange="myFunction()">
+											<option value="Delivery &amp; Pickup">Delivery &amp; Pickup &amp; Dine In</option>
+											<option value="Delivery">Delivery</option>
+											<option value="Pickup">Pickup</option>
+											<option value="Dine In">Dine In</option>
+										</select>		
+										<input type="text" name="" class="addrs palce_country1 back_img_input col-sm-8" onclick="getLocation()" id="demo" placeholder="Enter your address/Zip Code">
+										<span class="arrow-down"></span>
+									</div>
+									<input type="submit" value="Let&#39;s Go!" class="" style="width:20%; float:left;">
+								</div>
+							</div>
+							<!--menu-->
+							<div class="row">
+								<div class="col-sm-12 col-xs-12">
+									
+									<ul class="row">
+																				<li class="col-xs-3 col-sm-3">
+											<div class="upper_border">
+												<div class="new_border">
+																										<!--<a href="restaurantDetails.php?resid=171" style="color:#111111;"> -->
+													<a href="http://www.foodorderingscript.com/demo-new/171/maharaja-wok" style="color:#111111;">
+														<img src="./budgetrestaurant/thumb_gulab-jamun.jpg">
+													</a>
+																									</div>
+											</div>
+											<center>Gulab Jamun</center>
+										</li>
+																				<li class="col-xs-3 col-sm-3">
+											<div class="upper_border">
+												<div class="new_border">
+																										<!--<a href="restaurantDetails.php?resid=171" style="color:#111111;"> -->
+													<a href="http://www.foodorderingscript.com/demo-new/171/maharaja-wok" style="color:#111111;">
+														<img src="./budgetrestaurant/lunch.jpg">
+													</a>
+																									</div>
+											</div>
+											<center>Mango Cream mit frischen Mangos</center>
+										</li>
+																				<li class="col-xs-3 col-sm-3">
+											<div class="upper_border">
+												<div class="new_border">
+																										<!--<a href="restaurantDetails.php?resid=171" style="color:#111111;"> -->
+													<a href="http://www.foodorderingscript.com/demo-new/171/maharaja-wok" style="color:#111111;">
+														<img src="./budgetrestaurant/thumb_punjabi-samosas.jpg">
+													</a>
+																									</div>
+											</div>
+											<center>Punjabi Samosas</center>
+										</li>
+																				<li class="col-xs-3 col-sm-3">
+											<div class="upper_border">
+												<div class="new_border">
+																										<!--<a href="restaurantDetails.php?resid=171" style="color:#111111;"> -->
+													<a href="http://www.foodorderingscript.com/demo-new/171/maharaja-wok" style="color:#111111;">
+														<img src="./budgetrestaurant/thumb_pad-thai.jpeg">
+													</a>
+																									</div>
+											</div>
+											<center>Pad Thai</center>
+										</li>
+																				<li class="col-xs-3 col-sm-3">
+											<div class="upper_border">
+												<div class="new_border">
+																										<!--<a href="restaurantDetails.php?resid=171" style="color:#111111;"> -->
+													<a href="http://www.foodorderingscript.com/demo-new/171/maharaja-wok" style="color:#111111;">
+														<img src="./budgetrestaurant/thumb_peshawari-nan.jpg">
+													</a>
+																									</div>
+											</div>
+											<center>Peshawari Nan</center>
+										</li>
+																				<li class="col-xs-3 col-sm-3">
+											<div class="upper_border">
+												<div class="new_border">
+																										<!--<a href="restaurantDetails.php?resid=171" style="color:#111111;"> -->
+													<a href="http://www.foodorderingscript.com/demo-new/171/maharaja-wok" style="color:#111111;">
+														<img src="./budgetrestaurant/thumb_aloo-parantha.jpg">
+													</a>
+																									</div>
+											</div>
+											<center>Aloo Parantha</center>
+										</li>
+																			</ul>
+									<div style="clear:both"></div>
+								</div>
+								<div style="clear:both"></div>
+							</div>
+							<!--menu-->
+							<!-- Mobile footer -->
+							<!-- Mobile footer end -->
+						</div>
+						<div class="order-place order-place_added container">
+
+								<div class="col-md-12 col-lg-12 col-sm-12" style="float:none;margin:0px auto;">
+									<form action="" id="" name="" accept-charset="utf-8">
+										<h1 class="text-custom-style" style="text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.4);font-family: StencilW01-Bold,fantasy;font-size: 35px;color: #FEFDFD;word-wrap: break-word;line-height: normal;letter-spacing: normal;"><b>Enter Budget </b>  &amp; <b>Get recommendations</b> </h1>
+										<h1 class="delivery_pickup_div2">Give treat based on your budget</h1>
+										<div class="header-search-blur">
+											<div class="col-md-12 col-lg-12 col-sm-12">
+												<div id="sb_restaurant">
+													<div class="check_height_search" style="background: transparent none repeat scroll 0% 0%;">
+														<input class="palce_country" style="-webkit-appearance: none;-moz-appearance: none;" name="nopeople" id="nopeople" placeholder="Enter number of people">
+														</input>
+														<input class="palce_country" style="-webkit-appearance: none;-moz-appearance: none;" name="nopeople" id="budget" placeholder="Enter your Budget">
+														</input>
+														<input type="button" id ="submitbutton" value="Let&#39;s Go!" class="abc" style="width:20%; float:left;" >
+													</div>
+												</div>
+												
+												
+											</div>	
+											<div style="clear:both"></div>
+										</div>
+
+									</form>
+
+									
+								</div>
+
+							
+							
+						</div>
+						
+					</div>
+							<div class="col-md-12" style="">
+								<div class="alert alert-success" style="height:auto;width: 50%; margin: 0 auto;display:none;">
+								  <strong>Success!</strong> Indicates a successful or positive action.
+								</div>
+
+								<div class="alert alert-info" id="loading" style="height:auto;width: 50%; margin: 0 auto;display:none;">
+								  <strong>Loading.!</strong> Fetching recommendations for you. please wait.
+								</div>
+
+								<div class="alert alert-warning" style="height:auto;width: 50%; margin: 0 auto;display:none;">
+								  <strong>Warning!</strong> Indicates a warning that might need attention.
+								</div>
+
+								<div class="alert alert-danger" id="invalidValues" style="height:auto;width: 50%; margin: 0 auto;display:none;">
+								  <strong>Invalid Value!</strong> Please enter valid values
+								</div>
+							</div>
+							</div>
+				</div>
+				
+		</div></section>
+		
+		</div>
+		<div class="heading_top_back" id="proc">
+			<div class="contain_common_width container how-it-works">
+				<div class="works_dv row">
+					<div class="heading_popular_text"></div>
+					
+				</div>
+				
+				<div class="row" id="resResults" style="margin-bottom: 30px;">
+
+					
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div class="clearfix"></div>
+		<section class="home_intro" style="display:none;" >
+			<div class="container" style="height:100px">
+				
+			</div>
+		</section>
+		<div class="heading_top_back" id="proc">
+			
+			<div style="clear:both"></div>
+		</div>
+		
+		<!--menu-->
+
+	<div style="clear: both"></div>
+
+<div style="clear: both"></div>
+
+<div class="footer2">
+	<div class="contain_common_width container">
+	  <div class="row">
+    	<div class="col-md-6 social_rotal" style="float:left;margin-top: 16px;"><p>Copyright @2017 Budgetrestaurants.in</p></div>
+		
+		<div class="clear"></div>
+		</div>
+	</div>
+</div>
+    <!-- .mb80 .pt100 -->
+   
+    <!--///////////////
+  /// Footer End ///
+  ///////////////-->
+    <!-- jQuery and jQuery Migrate -->
+<!--
+</script>
+  </body>
+</html>-->
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script type="text/javascript" src="./budgetrestaurant/jquery-1.11.1.min.js.download"></script>
+	<script type="text/javascript" src="./budgetrestaurant/jquery.min.js.download"></script>
+	<script type="text/javascript" src="./budgetrestaurant/jquery-ui-1.8.2.custom.min.js.download"></script>
+
+	<script type="text/javascript" src="./budgetrestaurant/auto_suggest.js.download"></script>
+
+
+	<script type="text/javascript" src="./budgetrestaurant/jquery.tipTip.js.download"></script>
+	<script type="text/javascript" src="./budgetrestaurant/jquery.tipTip.minified.js.download"></script>
+
+		<script type="text/javascript" src="./budgetrestaurant/error_lang.js.download"></script>
+		
+	<script type="text/javascript" src="./budgetrestaurant/jMyCarousel.min.js.download"></script>
+	<script type="text/javascript" src="./budgetrestaurant/bootstrap.min.js.download"></script>
+	<!--<script type="text/javascript" src="http://www.foodorderingscript.com/demo-new/js/smartBackgroundResize-1.0-jquery-plugin.js"></script>-->
+
+
+
+	
+	<script type="text/javascript">
+	var lat, lon;
+		function getLocation() {
+			//alert();
+			if (navigator.geolocation) {
+				var timeoutVal = 10 * 1000 * 1000;
+				navigator.geolocation.getCurrentPosition(
+					showPosition,
+					displayError, {
+						enableHighAccuracy: true,
+						timeout: timeoutVal,
+						maximumAge: 0
+					}
+				);
+			} else {
+				//alert("Geolocation is not supported by this browser");
+				console.log("Geolocation is not supported by this browser");
+			}
+		}
+
+		function showPosition(position) {
+			var j = jQuery.noConflict();
+			//alert(position.coords.latitude+','+position.coords.longitude);
+			lat = position.coords.latitude;
+			lon = position.coords.longitude;
+			console.log(lat+'--'+lon);
+			
+			
+		}
+
+		function displayError(error) {
+			var j = jQuery.noConflict();
+			var errors = {
+				1: 'Permission denied',
+				2: 'Position unavailable',
+				3: 'Request timeout'
+			};
+			//alert("Error: " + errors[error.code]);
+			console.log("Error: " + errors[error.code]);
+			if (error.code === 2) {
+				getLocationFromWeb("gps");
+			}
+		}	
+
+	</script>
+	 <script>
+		$(window).load(function() {
+
+			getLocation();
+
+			
+			$('#submitbutton').click(function(){
+			$('#invalidValues').hide();
+			$('#loading').hide();
+				var nopeople= $('#nopeople').val();
+				var budget= $('#budget').val();
+				if(nopeople == '' || nopeople== '0' || budget=='' || budget == '0'){
+					$('#invalidValues').show();
+					return;
+				}
+				
+				FB.login(function(loginresponse) {
+				    FB.api('/me',{fields: 'first_name,last_name,id,gender,email'}, function(response) {
+						  $('#loading').show();
+					
+						  var first_name=response.first_name;
+						  var last_name=response.last_name;
+						  var user_id=response.id;		  
+						  var user_gen=response.gender;
+						  var user_email=response.email;
+
+						  console.log(first_name);
+						  console.log(last_name);
+						  console.log(user_id);
+						  console.log(user_gen);
+						  console.log(user_email);
+						  AWS.config.region = 'us-east-1'; // Region
+							AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+								IdentityPoolId: 'us-east-1:3e2e200c-7626-43b9-b9ec-5835ae50d6c0',
+								Logins: {
+								'graph.facebook.com': loginresponse.authResponse.accessToken
+							  }
+							});
+						   AWS.config.credentials.get(function(err){
+								if (err) {
+									console.log("Error: "+err);
+									return;
+								}
+							console.log("Cognito Identity Id: " + AWS.config.credentials.identityId);
+							console.log("Cognito Identity Id: " + AWS.config.credentials.accessKeyId);
+							console.log("Cognito Identity Id: " + AWS.config.credentials.secretAccessKey);
+							console.log("Cognito Identity Id: " + AWS.config.credentials.sessionToken);
+							insertUser(user_id,first_name, user_email,function(res){
+									console.log("result after insertuser: "+ res.data);
+									if(res.data == "SUCCESS"){
+										getRestaurants(lat,lon, function(restaurants){
+											if(restaurants.data){
+												//console.log("result after getrestaurants: "+ restaurants.data);
+												updateRestaurants(restaurants.data, function(result){
+													console.log(result.sort(sortbybudget));
+													showRestaurants(result);
+													$('#loading').hide();
+												});
+												
+											}
+										});
+									}
+								});
+							});
+							
+
+	
+	
+						  
+					  });
+				}, {scope: 'public_profile,email'});
+			});
+			
+		function showRestaurants(res){
+			$('#resResults').html('');
+			var out='<div class="heading_popular_text"> Here is your recommended restaurants </div>';
+			var nopeople= $('#nopeople').val();
+			var budget= $('#budget').val();
+			
+			
+			for(var i=0;i<res.length;i++){
+				var row = res[i];
+				var estbudget = (row[1] / 2)*nopeople;
+				out= out+ '	<div class="col-lg-3 col-sm-3" style="margin-top:35px"><div class="step_pic"><img style="height:100px;width:200px;" src="'+row[2]+'"></div><div class="step_name">'+row[0]+'</div><div class="step_name1"> Estimated budget -'+estbudget+'</div><div class="step_name1"> Rating - '+row[5]+'</div><div class="step_name1"><a href="'+row[6]+'" target="_blank"><input type="button" class="btn-primary" style="padding:5px;margin: 0 auto;margin-top:5px" value="View More"> </input></a></div></div>'
+					
+			}
+			$('#resResults').html(out);
+
+		}
+		
+		function updateRestaurants(restaurants, callback){
+			var result= [];
+			result.length = 0;
+			var nopeople= $('#nopeople').val();
+			var budget= $('#budget').val();
+			var budgetfor2 = (budget / nopeople)*2;
+			var data = $.parseJSON(restaurants);
+			var images = ['https://s3.amazonaws.com/budgetrestaurants.in/budgetrestaurant/1.jpg', 'https://s3.amazonaws.com/budgetrestaurants.in/budgetrestaurant/2.jpg', 'https://s3.amazonaws.com/budgetrestaurants.in/budgetrestaurant/4.jpg'];    
+
+			$.each(data.nearby_restaurants, function(key, val) {	
+				var row=[];
+				var featImage;
+				$.each(val, function(index, val1) {
+					console.log(val1.name + ' ' + val1.url + ' ' + val1.average_cost_for_two + ' ' + val1.thumb + ' ' + val1.featured_image);
+					if(val1.average_cost_for_two < budgetfor2)
+						{	
+							if(val1.featured_image == ''){
+								featImage =	images[Math.floor(Math.random() * images.length)];
+							}else {
+								featImage = val1.featured_image;}
+							row.push(val1.name, val1.average_cost_for_two, featImage, val1.location.latitude, val1.location.longitude, val1.user_rating.aggregate_rating, val1.url);
+							result.push(row);
+						}
+				});
+			});
+			callback(result);
+		}
+		
+		
+		function getRestaurants(latitude,longitude,callback ){
+			console.log("lat and lon inside getrestaurants : "+ latitude +" -- "+longitude)
+			var apigClient = apigClientFactory.newClient({
+				accessKey: AWS.config.credentials.accessKeyId,
+				secretKey: AWS.config.credentials.secretAccessKey,
+				sessionToken: AWS.config.credentials.sessionToken
+			});
+
+			var params = {
+				// This is where any modeled request parameters should be added.
+				// The key is the parameter name, as it is defined in the API in API Gateway.
+				"lat" : latitude,
+				"lon" : longitude
+			};
+
+			var body = {
+				  
+				};
+
+			var additionalParams = {
+				// If there are any unmodeled query parameters or headers that must be
+				//   sent with the request, add them here.
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				queryParams: {}
+			};
+
+			apigClient.getrestaurantsGet(params, body, additionalParams)
+			.then(function(result) {
+				callback(result);
+			}).catch(function(err) {
+				
+				callback(err);
+			});
+		}
+		function insertUser(user_id,first_name, user_email,callback){
+			var apigClient = apigClientFactory.newClient({
+				accessKey: AWS.config.credentials.accessKeyId,
+				secretKey: AWS.config.credentials.secretAccessKey,
+				sessionToken: AWS.config.credentials.sessionToken
+			});
+
+			var params = {
+				// This is where any modeled request parameters should be added.
+				// The key is the parameter name, as it is defined in the API in API Gateway.
+			};
+
+			var body = {
+				  "id": user_id,
+				  "name" : first_name,
+				  "email" : user_email
+				};
+
+			var additionalParams = {
+				// If there are any unmodeled query parameters or headers that must be
+				//   sent with the request, add them here.
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				queryParams: {}
+			};
+
+			apigClient.insertuserPost(params, body, additionalParams)
+			.then(function(result) {
+				callback(result);
+			}).catch(function(err) {
+				
+				callback(err);
+			});
+		}
+
+		function sortbybudget(a, b) {
+			if (a[1] === b[1]) {
+				return 0;
+			}
+			else {
+				return (a[1] < b[1]) ? -1 : 1;
+			}
+		}
+		
+			
+		
+			
+		});
+	 </script>
+	 
+	 <script>
+		  window.fbAsyncInit = function() {
+			FB.init({
+			  appId      : '1381299568622006',
+			  cookie     : true,
+			  xfbml      : true,
+			  version    : 'v2.8'
+			});
+			FB.AppEvents.logPageView();   
+		  };
+
+		  (function(d, s, id){
+			 var js, fjs = d.getElementsByTagName(s)[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement(s); js.id = id;
+			 js.src = "//connect.facebook.net/en_US/sdk.js";
+			 fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+	<style type="text/css">
+		.delivery_pickup_div2 {
+		    font-size: 23px;
+		    color: white;
+		    text-align: center;
+		    text-shadow: 0px 2px #272727;
+		    font-family: sans-serif !important;
+		    margin-top: 10px;
+		}
+		.carousel-inner>.item {
+			-webkit-transition: opacity 2s ease-in-out;
+			transition: opacity 2s ease-in-out;
+		}
+		
+		.carousel-inner>.next.left,
+		.carousel-inner>.prev.right {
+			opacity: 1;
+			z-index: 1;
+			left: 0;
+		}
+		
+		.carousel-inner>.active.left {
+			opacity: 0;
+			z-index: 2;
+			left: 0;
+		}
+		
+		.carousel-inner>.active.right {
+			opacity: 0;
+			z-index: 2;
+			left: 0;
+		}
+		
+		
+		/* remove previous/next arrows from home page only */
+		
+		.home .carousel-control {
+			display: none;
+		}
+		/* END OF Change Slider to Fader */
+	</style>
+	
+
+
+<div id="tiptip_holder" style="max-width:auto;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div></body></html>

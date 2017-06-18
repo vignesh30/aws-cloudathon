@@ -1,0 +1,355 @@
+//---------------------------------------------------------------------------------------------//
+//Restaurant Owner Register Start**************************************************************//
+//---------------------------------------------------------------------------------------------//
+	//Restaurant Owner Register Validate
+	$(document).ready(function(){
+		
+		$("#order1").click(function(){
+			if (document.getElementById('order1').checked==true) {
+				$("#pr").val("yes");
+			}
+			else{$("#pr").val("no");}
+		});
+		$("#order2").click(function(){
+			if (document.getElementById('order2').checked==true) 
+			{
+				$("#em").val("yes");
+			}
+			else
+			{
+				$("#em").val("no");
+			}
+		});
+		})
+	function restOwnerRegisterValidate(){
+		
+		var err_lang_arr = error_language();
+		
+		var restaurant_name 			= $("#restaurant_name").val();
+		var restaurant_contact_name 	= $("#restaurant_contact_name").val();
+		var restaurant_phone 			= $("#restaurant_phone").val();
+		var restaurant_contact_email 	= $("#restaurant_contact_email").val();
+		var restaurant_pass 	        = $("#restaurant_pass").val();
+		var restaurant_fax 				= $("#restaurant_fax").val();
+		var restaurant_zip 				= $("#restaurant_zip").val();
+		var restaurant_streetaddress 	= $("#restaurant_streetaddress").val();
+		var restaurant_website 	    	= $("#restaurant_website").val();
+		var printer 	    	        = $("#pr").val();
+		var email                       = $("#em").val();
+		var saletax                     =$("#saletax").val();
+		
+		//var regUrl 						= /^(((ht|f){1}(tp:[/][/]){1})|((www.){1}))[-a-zA-Z0-9@:%_\+.~#?&//=]+$/;
+		var regUrl = /^(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?$/;
+		var nameRegex = /^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$/;
+		var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		
+		if(restaurant_name == ''){
+			$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_name']);
+			$("#restaurant_name").focus();
+			return false;		
+		}
+		/*if(!restaurant_name.match(nameRegex)) {
+		    $("#errormsg").addClass('errormsg').html(err_lang_arr['res_owner_res_correctname']);
+		    $("#restaurant_name").focus();
+		    return false;
+  		}*/
+		
+		if((restaurant_phone) == ''){
+			$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_phone']);
+			$("#restaurant_phone").focus();
+			return false;	
+		}
+		if(restaurant_contact_name == ''){
+			$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_contactname']);
+			$("#restaurant_contact_name").focus();
+			return false;		
+		}
+		if(restaurant_phone != ''){
+			if(isNaN(restaurant_phone)){
+				$("#errormsg").addClass('errormsg').html(err_lang_arr['res_owner_res_validphone']);
+				$("#restaurant_phone").focus();
+				return false;
+			}
+        }
+		if (restaurant_pass =='') {
+			$("#errormsg").addClass('errormsg1').html("Enter Restaurant password");
+			$("#restaurant_pass").focus();
+			return false;
+		}
+		if(restaurant_contact_email == ''){
+			$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_contactemail']);
+			$("#restaurant_contact_email").focus();
+			return false;		
+		}
+		if(!(reg.test(restaurant_contact_email))){
+		   	$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_invalidemail']).show();
+			$("#restaurant_contact_email").focus();
+			return false;
+		}
+		if(restaurant_fax != ''){
+			
+			if(isNaN(restaurant_fax)){
+				$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_invalidfax']);
+				$("#restaurant_fax").focus();
+				return false;		
+			}
+		}
+		if((restaurant_website) != ''){
+			if(regUrl.test(restaurant_website) == false){
+				$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_validwebsite']);
+				$("#restaurant_website").focus();
+				return false;
+			}
+		}
+		
+		if((restaurant_streetaddress) == ''){
+			$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_streetaddr']);
+			$("#restaurant_streetaddress").focus();
+			return false;	
+		}
+		
+		$.post(jssitebaseUrl+'/ajaxFile.php',{"restaurant_name":restaurant_name,"restaurant_phone":restaurant_phone,"restaurant_fax":restaurant_fax,"restaurant_contact_name":restaurant_contact_name,"restaurant_contact_email":restaurant_contact_email,"restaurant_website":restaurant_website,"restaurant_streetaddress":restaurant_streetaddress,"restaurant_zip":restaurant_zip,"restaurant_pass":restaurant_pass,"saletax":saletax,"email":email,"printer":printer,"action":"restaurantOwnerregister"},function(output){
+			//alert(output);
+			//return false ;
+			if(output == 'resowner_success'){
+				if(jssiteuserfriendly == 'Y'){
+					window.location = jssitebaseUrl+"/rest_thanks";
+				}else{
+				window.location = jssitebaseUrl+"/restaurantOwnerThanks.php";
+				}
+			}else if(output == 'already'){
+				$("#errormsg").addClass('errormsg1').html(err_lang_arr['res_owner_res_namealready']);
+				$("#restaurant_name").focus();
+				return false;	
+			}
+			else if(output == 'already_email'){
+				$("#errormsg").addClass('errormsg1').html("Email id already Exist");
+				$("#restaurant_contact_email").focus();
+				return false;	
+			}
+		});
+		return false;
+	}
+//---------------------------------------------------------------------------------------------//
+//Restaurant Owner Register End***************************************************************//
+//---------------------------------------------------------------------------------------------//
+
+//---------------------------------------------------------------------------------------------//
+//Restaurant Owner Login Start****************************************************************//
+//---------------------------------------------------------------------------------------------//
+	//Restaurant Login Validate
+	function restOwnerLoginValidate(){
+		
+		var err_lang_arr = error_language();
+		var restaurant_logemail 	= $("#restaurant_logemail").val();
+		var restaurant_logpassword 	= $("#restaurant_logpassword").val();
+		
+		var feedback = $(".feedback").val();
+		
+		if(restaurant_logemail == ''){
+			$("#errormsg").addClass('errormsg').html(err_lang_arr['res_owner_login_email']);
+			$("#restaurant_logemail").focus();
+			return false;		
+		}
+		if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(restaurant_logemail))){
+		   	$("#errormsg").addClass('errormsg').html(err_lang_arr['res_owner_login_invalidemail']).show();
+			$("#restaurant_logemail").focus();
+			return false;
+	    }
+		if((restaurant_logpassword) == ''){
+			$("#errormsg").addClass('errormsg').html(err_lang_arr['res_owner_login_password']);
+			$("#restaurant_logpassword").focus();
+			return false;	
+		}
+		if(restaurant_logemail != '' && restaurant_logpassword != ''){		
+			$.post(jssitebaseUrl+'/ajaxFile.php',{'restaurant_logemail':restaurant_logemail,'restaurant_logpassword':restaurant_logpassword,'action':'restaurantOwnerlogin'}, function(output){
+				//alert(output);
+				if(output == 'Deactivated'){
+					$("#errormsg").addClass('errormsg').html(err_lang_arr['res_owner_login_deactivatation']).show();
+					return false;
+				}else if(output == 'Pending'){
+					$("#errormsg").addClass('errormsg').html(err_lang_arr['res_owner_login_pending']).show();
+					return false;
+				}else if(output == 'Invalid_Login'){
+					$("#errormsg").addClass('errormsg').html(err_lang_arr['res_owner_login_invalid']).show();
+					return false;
+				}else{
+					if(feedback==''){
+						if(jssiteuserfriendly == 'Y'){
+							window.location = jssitebaseUrl+"/restaurant-myaccount";
+						}else{
+							window.location = jssitebaseUrl+"/restaurantOwnerMyaccount.php";
+						}
+					}else{
+						if(jssiteuserfriendly == 'Y'){
+							window.location = jssitebaseUrl+"/site-feedback";
+						}else{
+							window.location = jssitebaseUrl+"/siteFeedback.php";
+						}
+					}
+				} 
+			});
+		}
+		return false;
+	}
+//---------------------------------------------------------------------------------------------//
+//Restaurant Owner Login End******************************************************************//
+//---------------------------------------------------------------------------------------------//
+
+//---------------------------------------------------------------------------------------------//
+//Restaurant Owner Forget Password Start******************************************************//
+//---------------------------------------------------------------------------------------------//
+	//Forget Password POPUP
+	function restaurantForgetPasswordPopup(){
+			
+			//myPopupWindowOpen('#restaurantforgetpop','#maska');
+			forget = jQuery.noConflict();
+			forget("#restaurantforgetpop").one('shown', function(){
+				var modalTop = forget(window).scrollTop() + 30;
+				forget("#restaurantforgetpop").css("top",modalTop);
+			}).modal("show");
+			
+			//Form
+			forget("#errforgetemail").hide();
+			forget("#forgetemail").focus();
+	}
+	//------------------------------------------------------------------------------------//
+	//Terms and Condition POPUP
+	/*function termsConditionPopup(){
+		//myPopupWindowOpen('#termsCondition','#maska');
+		jQuery.noConflict();
+		$("#termsCondition").one('shown', function(){
+			var modalTop = $(window).scrollTop() + 30;
+			$("#termsCondition").css("top",modalTop);
+		}).modal("show");
+	}*/
+	//Forget Password validate
+	function restaurantForgetPassword(){
+		
+		var err_lang_arr = error_language();
+		var forgetemail = $("#forgetemail").val();
+		
+		if(forgetemail == ''){
+			$("#errforgetemail").addClass('errormsg').html(err_lang_arr['res_owner_forgetpass_email']).show();
+			$("#forgetemail").focus();
+			return false;
+		}else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(forgetemail))){
+		   	$("#errforgetemail").addClass('errormsg').html(err_lang_arr['res_owner_forgetpass_invalidemail']).show();
+			$("#forgetemail").focus();
+			return false;
+	    }else{
+			$("#errforgetemail").hide();
+		} 
+		if(forgetemail != ''){		
+			$.post(jssitebaseUrl+'/ajaxFile.php',{'forgetemail':forgetemail,'action':'restaurantforgetPassword'}, function(output){
+				//alert(output);
+				if(output == 'sendpass_success'){
+					$("#errforgetemail").addClass('succmsg').html(err_lang_arr['res_owner_forgetpass_sendemail']).show();
+					setTimeout(function() {  
+						//$("#restaurantforgetpop").hide();
+						$("#restaurantforgetpop").modal("hide");
+						
+						$('#maska').fadeOut();
+						$("#forgetemail").val(''); }, 2000);
+                        window.location.reload();
+						return false;
+				}else if(output == 'no_email'){
+					$("#errforgetemail").addClass('errormsg').html(err_lang_arr['res_owner_forgetpass_notregemail']).show();
+				}
+			});
+		}
+		return false;
+	}
+//---------------------------------------------------------------------------------------------//
+//Restaurant Owner Forget Password End************************************************//
+//---------------------------------------------------------------------------------------------//
+//Get Show City
+	function getCityListRest(statecode){
+		//alert(statecode);
+		req.onreadystatechange = function(){
+			
+	    	if(req.readyState == 4){
+			 	if (req.status == 200){
+			 		//alert(req.responseText);
+			    	document.getElementById('showResCityList').innerHTML=req.responseText;
+			 	}else {
+		   	   		$.prompt("There was a problem while using XMLHTTP:\n" + req.statusText);
+			 	}
+	      	}
+		}
+	   	req.open("GET", jssitebaseUrl+"/ajaxActionRestaurant.php?statecode="+statecode+"&action=showResCityList", true);
+	   	req.send(null);
+	}
+//#-------------------------state setting-------------
+
+function getCityListRestMy(statecode){
+		//alert(statecode);
+		req.onreadystatechange = function(){
+			
+	    	if(req.readyState == 4){
+			 	if (req.status == 200){
+			 		//alert(req.responseText);
+			    	document.getElementById('showResCityListMy').innerHTML=req.responseText;
+			 	}else {
+		   	   		$.prompt("There was a problem while using XMLHTTP:\n" + req.statusText);
+			 	}
+	      	}
+		}
+	   	req.open("GET", jssitebaseUrl+"/ajaxActionRestaurant.php?statecode="+statecode+"&action=showResCityListMy", true);
+	   	req.send(null);
+	}	
+
+	function getCityListRestMy1(statecode){
+		//alert(statecode);
+		req.onreadystatechange = function(){
+			
+	    	if(req.readyState == 4){
+			 	if (req.status == 200){
+			 		//alert(req.responseText);
+			    	document.getElementById('showResCityListMy').innerHTML=req.responseText;
+			 	}else {
+		   	   		$.prompt("There was a problem while using XMLHTTP:\n" + req.statusText);
+			 	}
+	      	}
+		}
+	   	req.open("GET", jssitebaseUrl+"/ajaxActionRestaurant.php?statecode="+statecode+"&action=showResCityListMy1", true);
+	   	req.send(null);
+	}	
+	
+//#-------------------------state account-------------	
+function getCityListRestAcc(statecode){
+		//alert(statecode);
+		req.onreadystatechange = function(){
+			
+	    	if(req.readyState == 4){
+			 	if (req.status == 200){
+			 		//alert(req.responseText);
+			    	document.getElementById('showResCityListAcc').innerHTML=req.responseText;
+			 	}else {
+		   	   		$.prompt("There was a problem while using XMLHTTP:\n" + req.statusText);
+			 	}
+	      	}
+		}
+	   	req.open("GET", jssitebaseUrl+"/ajaxActionRestaurant.php?statecode="+statecode+"&action=showResCityListAcc", true);
+	   	req.send(null);
+	}	
+
+
+
+	//Get Show Zip
+/*	function getZipListRest(cid){
+		
+		req.onreadystatechange = function(){
+			
+	    	if (req.readyState == 4){
+			 	if (req.status == 200){
+			 		//alert(req.responseText);
+			    	document.getElementById('showResZipList').innerHTML=req.responseText;
+			 	}else {
+		   	   		$.prompt("There was a problem while using XMLHTTP:\n" + req.statusText);
+			 	}
+	      	}
+		}
+	   	req.open("GET", jssitebaseUrl+"/ajaxActionRestaurant.php?cid="+cid+"&action=showResZipList", true);
+	   	req.send(null);
+	}*/

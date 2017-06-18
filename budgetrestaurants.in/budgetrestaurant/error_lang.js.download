@@ -1,0 +1,477 @@
+function error_language(){
+	
+	var errLangArr = new Array();
+	
+	//Customer Register 
+	errLangArr['cus_reg_empty_name'] 				= "Please enter customer name";
+	errLangArr['cus_reg_correct_name']				= "Please enter valid name";
+	errLangArr['cus_reg_empty_lastname'] 			= "Please enter Last name";
+	errLangArr['cus_reg_empty_address'] 			= "Please enter customer address";
+	errLangArr['cus_reg_empty_street'] 				= "Please enter customer cross street";
+	errLangArr['cus_reg_empty_zip'] 				= "Please enter customer zip";
+	errLangArr['cus_reg_empty_city'] 				= "Please select customer city";
+	errLangArr['cus_reg_empty_state'] 				= "Please select customer state";
+	errLangArr['cus_reg_correct_zip']				= "Please enter valid zip";
+	errLangArr['cus_reg_correct_city']				= "Please enter valid city";
+	errLangArr['cus_reg_correct_state']				= "Please enter valid state";
+	errLangArr['cus_reg_empty_phone'] 				= "Please enter customer phone";
+	errLangArr['cus_reg_correct_phone']				= "Please enter valid phone";
+	errLangArr['cus_reg_empty_email'] 				= "Please enter customer email";
+	errLangArr['cus_reg_invalid_email'] 			= "Invalid Email Address";
+	errLangArr['cus_reg_empty_password'] 			= "Please enter customer password";
+	errLangArr['cus_reg_empty_conpassword'] 		= "Please enter customer confirm password";
+	errLangArr['cus_reg_invalid_password'] 		    = "Mismatch cofirm password";
+	
+	//Customer Login 
+	errLangArr['cus_login_email_empty'] 			= "Please enter email address";
+	errLangArr['cus_login_email_valid'] 			= "Invalid Email Address";
+	errLangArr['cus_login_pass_empty'] 				= "Please enter password";
+	errLangArr['cus_login_account_deacivate'] 		= "Your profile has been deactivated. Please contact admin";
+	//errLangArr['cus_login_account_pending'] 		= "Pending your profile , Please contact admin";
+	errLangArr['cus_login_account_pending'] 		= "Please activate your account";
+	errLangArr['cus_login_invalid'] 				= "Invalid Login";
+	
+	//Customer Forget Password
+	errLangArr['cus_login_forgetemail_empty'] 		= "Please enter email address";
+	errLangArr['cus_login_forgetemail_valid'] 		= "Invalid Email Address";
+	
+	//Customer Update Profile
+	errLangArr['cus_profile_update_name'] 			= "Please enter firstname";
+	errLangArr['cus_profile_update_lastname']		= "Please enter lastname";
+	errLangArr['cus_profile_update_street'] 		= "Please enter customer street";
+	errLangArr['cus_profile_update_email'] 			= "Please enter customer email";
+	errLangArr['cus_profile_update_phone'] 			= "Please enter customer phone";
+	errLangArr['cus_profile_update_phonenocheck']	= "Please enter valid customer phone";
+	errLangArr['cus_profile_update_phonenoless'] 	= "Please enter valid customer phone";
+	errLangArr['cus_profile_update_success'] 		= "Profile has been Updated Successfully";
+	
+	//Customer Update Profile
+	errLangArr['cus_addressbook_update_doorno'] 	= "Please enter door number";
+	errLangArr['cus_addressbook_update_street'] 	= "Please enter customer cross street";
+	errLangArr['cus_addressbook_update_area'] 		= "Please enter customer area";
+	errLangArr['cus_addressbook_update_city'] 		= "Please select customer city";
+	errLangArr['cus_addressbook_update_state'] 		= "Please enter customer state";
+	errLangArr['cus_addressbook_update_landline'] 	= "Please enter valid landline number";
+	errLangArr['cus_addressbook_update_zip'] 	    = "Please enter customer zip";
+	errLangArr['cus_addressbook_update_validzip'] 	= "Please enter customer valid zip";
+	errLangArr['cus_addressbook_update_success'] 	= "primary Address has been Updated Successfully";
+	
+	//Customer Change Password
+	errLangArr['cus_changepass_check_oldpass'] 		= "Please enter Old Password";
+	errLangArr['cus_changepass_check_newpass'] 		= "Please enter New Password";
+	errLangArr['cus_changepass_check_retypepass'] 	= "Please enter Retype Password";
+	errLangArr['cus_changepass_check_oldnewpass'] 	= "Old Password and New Password should not be Same";
+	errLangArr['cus_changepass_check_newconfpass']	= "New Password and Confirm Password should be Same";
+	errLangArr['cus_changepass_check_invalidpass']	= "Invalid Old Password";
+	errLangArr['cus_changepass_check_success']		= "Password has been Updated Successfully";
+	
+	//Customer My Favorites
+	errLangArr['cusfav_sure_want_delete']				= "Are you sure want to Delete?";
+	
+	//Restaurant Owner Register
+	errLangArr['res_owner_res_name']				= "Please enter restaurant name";
+	errLangArr['res_owner_res_correctname']			= "Please enter restaurant valid name";
+	errLangArr['res_owner_res_phone']				= "Please enter restaurant phone";
+	errLangArr['res_owner_res_validphone']			= "Please enter valid restaurant phone";
+	errLangArr['res_owner_res_phonenoless']			= "Please enter valid restaurant phone";
+	errLangArr['res_owner_res_fax']					= "Please enter restaurant fax";
+	errLangArr['res_owner_res_invalidfax']			= 'Please enter restaurant valid fax number';
+	errLangArr['res_owner_res_contactname']			= "Please enter restaurant contact name";
+	errLangArr['res_owner_res_contactphone']		= "Please enter restaurant contact phone";
+	errLangArr['res_owner_res_validcontactphone']	= "Please enter valid contact phone";
+	errLangArr['res_owner_res_validcontphoneless']	= "Please enter valid contact phone";
+	errLangArr['res_owner_res_contactemail']		= "Please enter restaurant contact email";
+	errLangArr['res_owner_res_invalidemail']		= "Invalid Email Address";
+	errLangArr['res_owner_res_website']				= "Please enter restaurant website";
+	errLangArr['res_owner_res_validwebsite']		= "Please enter valid restaurant website";
+	errLangArr['res_owner_res_streetaddr']			= "Please enter restaurant streetaddress";
+	errLangArr['res_owner_res_city']				= "Please enter restaurant city";
+	errLangArr['res_owner_res_state']				= "Please enter restaurant state";
+	errLangArr['res_owner_res_zip']					= "Please enter restaurant zip";
+	errLangArr['res_owner_res_correctzip']			= "Please enter restaurant valid zip";
+	errLangArr['res_owner_res_namealready']			= "Restaurant name already exist";
+	
+	
+	//Restaurant Owner Login
+	errLangArr['res_owner_login_email']				= "Please enter email address";
+	errLangArr['res_owner_login_invalidemail']		= "Invalid Email Address";
+	errLangArr['res_owner_login_password']			= "Please enter password";
+	errLangArr['res_owner_login_deactivatation']	= "Deactivated your profile , Please contact admin";
+	errLangArr['res_owner_login_pending']			= "Pending your profile , Please contact admin";
+	errLangArr['res_owner_login_invalid']			= "Invalid Login";
+	
+	//Restaurant owner Forget Password
+	errLangArr['res_owner_forgetpass_email']		= "Please enter Email Address";
+	errLangArr['res_owner_forgetpass_invalidemail']	= "Invalid Email Address";
+	errLangArr['res_owner_forgetpass_sendemail']	= "Password has been sent to your email address";
+	errLangArr['res_owner_forgetpass_notregemail']	= "This email address not registered";
+	
+	//Restaurant owner Category Edit
+	errLangArr['res_owner_category_name']			= "Please enter category name";
+	errLangArr['res_owner_category_exist']			= "Category Name Already Exist";
+	errLangArr['res_owner_category_error']			= "Error occured";
+	
+	//Restaurant owner Category Add New
+	errLangArr['res_owner_categorynew_name']		= "Please enter category name";
+	errLangArr['res_owner_categorynew_exist']		= "Category Name Already Exist";
+	errLangArr['res_owner_categorynew_error']		= "Error occured";
+	
+	//Restaurant Owner Menu Add New
+	errLangArr['res_owner_menunew_name']			= "Please enter menu name ";
+	errLangArr['res_owner_menunew_catothers']		= "Please enter menu category others";
+	errLangArr['res_owner_menunew_category']		= "Please enter menu category";
+	errLangArr['res_owner_menunew_catexist']		= "This Category already exists";
+	errLangArr['res_owner_menunew_type']			= "Please select menu type";
+	errLangArr['res_owner_menunew_menuexist']		= "Menu Name Already Exist";
+	errLangArr['res_owner_menunew_cuisine']			= "Please enter menu cuisine";
+	errLangArr['res_owner_menunew_price']			= "Please enter menu price";
+	errLangArr['res_owner_menunew_correctprice']	= "Please enter correct menu price";
+	
+	//Restaurant Owner Menu Edit 
+	errLangArr['res_owner_menuedit_name']			= "Please enter menu name";
+	errLangArr['res_owner_menuedit_category']		= "Please enter menu category";
+	errLangArr['res_owner_menuedit_catothers']		= "Please enter menu category others";
+	errLangArr['res_owner_menuedit_catexist']		= "Other Category Already Exist";
+	errLangArr['res_owner_menuedit_type']			= "Please select menu type";
+	errLangArr['res_owner_menuedit_menuexist']		= "Menu Name Already Exist";
+	errLangArr['res_owner_menuedit_cuisine']		= "Please enter menu cuisine";
+	errLangArr['res_owner_menuedit_price']			= "Please enter menu price";
+	errLangArr['res_owner_menuedit_desc']			= "Please enter menu description";
+	errLangArr['res_owner_menuedit_correctprice']	= "Please enter correct menu price";
+	
+	//Restaurant Owner Addon New
+	errLangArr['res_owner_addonnew_catname']		= "Please enter category name";
+	errLangArr['res_owner_addonnew_catnameothers']	= "Please enter category name other";
+	errLangArr['res_owner_addonnew_name']			= "Please enter addons name";
+	errLangArr['res_owner_addonnew_addonexist']		= "Addons Name Already Exist";
+	errLangArr['res_owner_addonnew_error']			= "Error occured";
+	
+	
+	//Restaurant Owner Addon Edit	
+	errLangArr['res_owner_addonedit_catname']		= "Please enter category name";
+	errLangArr['res_owner_addonedit_catnameothers']	= "Please enter category name other";
+	errLangArr['res_owner_addonedit_name']			= "Please enter addons name";
+	errLangArr['res_owner_addonedit_addonexist']	= "Addons Name Already Exist";
+	errLangArr['res_owner_addonedit_error']			= "Error occured";
+	
+	//Restaurant Owner Offer New
+	errLangArr['res_owner_offer_percentage']		= "Please enter offer percentage";
+	errLangArr['res_owner_offer_validpercentage']	= "Please enter valid offer percentage";
+	errLangArr['res_owner_offer_price']				= "Please enter offer price";
+	errLangArr['res_owner_offer_validprice']		= "Please enter valid offer price";
+	errLangArr['res_owner_offer_from']				= "Please enter offer From";
+	errLangArr['res_owner_offer_to']				= "Please enter offer To";
+	errLangArr['res_owner_offer_validto']			= "Please enter valid offer To";
+	errLangArr['res_owner_offer_exist']				= "Offer Already Exist";
+	errLangArr['res_owner_offer_error']				= "Error occured";
+	
+	//Restaurant Owner Offer Edit
+	errLangArr['res_owner_offeredit_percentage']	= "Please enter offer percentage";
+	errLangArr['res_owner_offeredit_validpercent']	= "Please enter valid offer percentage";
+	errLangArr['res_owner_offeredit_price']			= "Please enter offer price";
+	errLangArr['res_owner_offeredit_validprice']	= "Please enter valid offer price";
+	errLangArr['res_owner_offeredit_from']			= "Please enter offer From";
+	errLangArr['res_owner_offeredit_to']			= "Please enter offer To";
+	errLangArr['res_owner_offeredit_validto']		= "Please enter valid offer To";
+	errLangArr['res_owner_offeredit_exist']			= "Offer Already Exist";
+	errLangArr['res_owner_offeredit_error']			= "Error occured";
+	
+	
+	//Restaurant Owner Account Info
+	errLangArr['res_owner_account_resname']			= "Please enter Restaurant Name";
+	errLangArr['res_owner_account_resphone']		= "Please enter restaurant phone";
+	errLangArr['res_owner_account_resvalidphone']	= "Please enter valid restaurant phone";
+	errLangArr['res_owner_account_validphoneless']	= "Please enter Valid Restaurant Phone";
+	errLangArr['res_owner_account_reswebsite']		= "Please enter Restaurant Website";
+	errLangArr['res_owner_account_resvalidweb']		= "Please enter Valid Restaurant Website";
+	errLangArr['res_owner_account_resfax']			= "Please enter Restaurant Fax";
+	errLangArr['res_owner_account_resstreetaddr']	= "Please enter Restaurant Street Address";
+	errLangArr['res_owner_account_resstate']		= "Please enter Restaurant State";
+	errLangArr['res_owner_account_rescity']			= "Please enter Restaurant City";
+	errLangArr['res_owner_account_reszip']			= "Please select Restaurant Zip";
+	errLangArr['res_owner_account_contactname']		= "Please enter Contact Name";
+	errLangArr['res_owner_account_contactphoneno']	= "Please enter Contact Phone Number";
+	errLangArr['res_owner_account_validphoneno']	= "Please enter Valid Contact Phone Number";
+	errLangArr['res_owner_account_validphonenoless']= "Please enter Valid Contact Phone Number";
+	errLangArr['res_owner_account_email']			= "Please enter email";
+	errLangArr['res_owner_account_validemail']		= "Please enter Valid email";
+	errLangArr['res_owner_account_success']   		= "Your Account Info updated successfully";
+	
+	
+	//Restaurant Owner Setting 
+	//Contact And Location Info
+	errLangArr['res_owner_setting_contactname']  	= "Please enter Contact Name";
+	errLangArr['res_owner_setting_contactphoneno']  = "Please enter Contact Phone Number";
+	errLangArr['res_owner_setting_contactemail']  	= "Please enter email";
+	errLangArr['res_owner_setting_validemail']  	= "Please enter Valid email";
+	errLangArr['res_owner_setting_contactpassword'] = "Please enter password";
+	errLangArr['res_owner_setting_streetaddr']  	= "Please enter Restaurant Street Address";
+	errLangArr['res_owner_setting_resstate'] 	 	= "Please enter Restaurant State";
+	errLangArr['res_owner_setting_rescity'] 	 	= "Please enter Restaurant City";
+	errLangArr['res_owner_setting_reszip'] 	 		= "Please select Restaurant Zip";
+	errLangArr['res_owner_setting_contactsuccess'] 	= "Your Contact Info updated successfully";
+	//changepassword
+	errLangArr['res_owner_setting_oldpass'] 	 	= "Please enter Old Password";
+	errLangArr['res_owner_setting_newpass'] 	 	= "Please enter New Password";
+	errLangArr['res_owner_setting_confirmpass'] 	= "Please enter confirm password";
+	errLangArr['res_owner_setting_oldnewpass'] 	 	= "Old Password and New Password should not be Same";
+	errLangArr['res_owner_setting_newconfirm'] 	 	= "New Password and Confirm Password should be Same";
+	errLangArr['res_owner_setting_invalidoldpass'] 	= "Invalid Old Password";
+	//Restaurant Info
+	errLangArr['res_owner_setting_resinfo_name'] 	= "Please enter Restaurant Name";
+	errLangArr['res_owner_setting_resinfo_phone'] 	= "Please enter restaurant phone";
+	errLangArr['res_owner_setting_resinfo_valphone']= "Please enter valid restaurant phone";
+	errLangArr['res_owner_setting_resinfo_phoneles']= "Please enter Valid Restaurant Phone";
+	errLangArr['res_owner_setting_resinfo_website'] = "Please enter Restaurant Website";
+	errLangArr['res_owner_setting_resinfo_validweb']= "Please enter Valid Restaurant Website";
+	errLangArr['res_owner_setting_resinfo_fax'] 	= "Please enter Restaurant Fax";
+	errLangArr['res_owner_setting_resinfo_aboutres']= "Please enter About Restaurant";
+	errLangArr['res_owner_setting_resinfo_pickup']  = "Please select pickup";
+	errLangArr['res_owner_setting_resinfo_booktab']	= "Please select book a table";
+	errLangArr['res_owner_setting_info_minorder']	= "Please enter Minimum Order Price";
+	errLangArr['res_owner_setting_info_validminord']= "Please enter Valid Minimum Order Price";
+	errLangArr['res_owner_setting_info_valminord2']	= "Please enter Valid Minimum Order Price";
+	errLangArr['res_owner_setting_info_salestax']	= "Please enter Sales Tax";
+	errLangArr['res_owner_setting_info_valsalestax']= "Please enter Valid Sales Tax";
+	errLangArr['res_owner_setting_info_salestaxno']	= "Please enter Valid Sales Tax";
+	//Restaurant Delivery
+	errLangArr['res_owner_setting_delivery_select'] = "Please select delivery";
+	errLangArr['res_owner_setting_delivery_esttime']= "Please enter Restaurant Estimated Time";
+	errLangArr['res_owner_setting_delivery_charge']	= "Please enter Delivery Charge";
+	errLangArr['res_owner_setting_delivery_valchar']= "Please enter Valid Delivery Charge";
+	
+	//Restaurant Bank Info
+	errLangArr['res_owner_setting_bank_name'] 		= "Please enter Bank Name";
+	errLangArr['res_owner_setting_bank_acno'] 		= "Please enter AC No";
+	errLangArr['res_owner_setting_routineno'] 		= "Please enter Routine No";
+	errLangArr['res_owner_setting_swiftno'] 		= "Please enter Swift Code";
+	errLangArr['res_owner_setting_bank_update'] 	= "Your Bank Info is updated successfully";
+	
+	//Restaurant Invoice Info
+	errLangArr['res_owner_setting_inv_time_period']	= "Please select Invoice Time Period";
+	errLangArr['res_owner_setting_invoice_update'] 	= "Your Invoice Time Period is updated successfully";
+	
+	//Restaurant Open Close Time Monday
+	errLangArr['res_owner_setting_monopenhr']		= "Please enter Monday Open Hours";
+	errLangArr['res_owner_setting_monopenmin']		= "Please enter Monday Open Minutes";
+	errLangArr['res_owner_setting_monclosehr']		= "Please enter Monday Close Hours";
+	errLangArr['res_owner_setting_monclosemin']		= "Please enter Monday Close Minutes";
+	//Restaurant Open Close Time Tuesday
+	errLangArr['res_owner_setting_tueopenhr']		= "Please enter Tuesday Open Hours";
+	errLangArr['res_owner_setting_tueopenmin']		= "Please enter Tuesday Open Minutes";
+	errLangArr['res_owner_setting_tueclosehr']		= "Please enter Tuesday Close Hours";
+	errLangArr['res_owner_setting_tueclosemin']		= "Please enter Tuesday Close Minutes";
+	//Restaurant Open Close Time Wednesday
+	errLangArr['res_owner_setting_wedopenhr']		= "Please enter Wednesday Open Hours";
+	errLangArr['res_owner_setting_wedopenmin']		= "Please enter Wednesday Open Minutes";
+	errLangArr['res_owner_setting_wedclosehr']		= "Please enter Wednesday Close Hours";
+	errLangArr['res_owner_setting_wedclosemin']		= "Please enter Wednesday Close Minutes";
+	//Restaurant Open Close Time Friday
+	errLangArr['res_owner_setting_thuropenhr']		= "Please enter Thursday Open Hours";
+	errLangArr['res_owner_setting_thuropenmin']		= "Please enter Thursday Open Minutes";
+	errLangArr['res_owner_setting_thurclosehr']		= "Please enter Thursday Close Hours";
+	errLangArr['res_owner_setting_thurclosemin']	= "Please enter Thursday Close Minutes";
+	//Restaurant Open Close Time Thursday
+	errLangArr['res_owner_setting_friopenhr']		= "Please enter Friday Open Hours";
+	errLangArr['res_owner_setting_friopenmin']		= "Please enter Friday Open Minutes";
+	errLangArr['res_owner_setting_friclosehr']		= "Please enter Friday Close Hours";
+	errLangArr['res_owner_setting_friclosemin']		= "Please enter Friday Close Minutes";
+	//Restaurant Open Close Time Saturday
+	errLangArr['res_owner_setting_satopenhr']		= "Please enter Saturday Open Hours";
+	errLangArr['res_owner_setting_satopenmin']		= "Please enter Saturday Open Minutes";
+	errLangArr['res_owner_setting_satclosehr']		= "Please enter Saturday Close Hours";
+	errLangArr['res_owner_setting_satclosemin']		= "Please enter Saturday Close Minutes";
+	//Restaurant Open Close Time Sunday
+	errLangArr['res_owner_setting_sunopenhr']		= "Please enter Sunday Open Hours";
+	errLangArr['res_owner_setting_sunopenmin']		= "Please enter Sunday Open Minutes";
+	errLangArr['res_owner_setting_sunclosehr']		= "Please enter Sunday Close Hours";
+	errLangArr['res_owner_setting_sunclosemin']		= "Please enter Sunday Close Minutes";
+	
+	
+	//paymentinfo_paypal
+	errLangArr['payment_paypal_contactname']		= "Please enter contact name";
+	errLangArr['payment_paypal_contactlastname']	= "Please enter last name";
+	errLangArr['payment_paypal_doorno']				= "Please enter delivery address door number";
+	errLangArr['payment_paypal_street']				= "Please enter delivery street";
+	errLangArr['payment_paypal_area']				= "Please enter delivery area";
+	errLangArr['payment_paypal_validphoneno']		= "Please enter valid contact phone";
+	errLangArr['payment_paypal_validlandline']		= "Please enter valid contact landline";
+	errLangArr['payment_paypal_email']				= "Please enter contact email";
+	errLangArr['payment_paypal_invalidemail']		= "Invalid Email Address";
+	errLangArr['payment_paypal_deliverydate']		= "Please enter delivery date";
+	errLangArr['payment_paypal_timehr']				= "Please enter Time";
+	errLangArr['payment_paypal_timemin']			= "Please enter Time";
+	errLangArr['payment_paypal_timesess']			= "Please enter Time";			
+	errLangArr['payment_paypal_mailexist']			= "This email id is already exist";
+	errLangArr['payment_paypal_timesess']			= "Please enter Time";
+	errLangArr['payment_paypal_timesess']			= "Please enter Time";
+	errLangArr['payment_paypal_timesess']			= "Please enter Time";
+	errLangArr['payment_paypal_timesess']			= "Please enter Time";
+	errLangArr['payment_paypal_timesess']			= "Please enter Time";
+	
+	//Alert Messages
+	errLangArr['alert_message_indexarea']			= "Please enter search area name";
+	errLangArr['alert_message_indexcuisine']		= "Please enter search cuisine name";
+	errLangArr['alert_message_indexresname']		= "Please enter search restaurant name";
+	errLangArr['alert_message_searcharea']			= "Please enter search area name";
+	errLangArr['alert_message_searchcuisine']		= "Please enter search cuisine name";
+	errLangArr['alert_message_searchresname']		= "Please enter search restaurant name";
+	
+	//submitOrder
+	errLangArr['submit_order_contactname']			= "Please enter contact name";
+	errLangArr['submit_order_contactlastname']		= "Please enter last name";
+	errLangArr['submit_order_doorno']				= "Please enter delivery address door number";
+	errLangArr['submit_order_street']				= "Please enter delivery street";
+	errLangArr['submit_order_area']					= "Please enter delivery area";
+	errLangArr['submit_order_city']					= "Please select delivery city";
+	errLangArr['submit_order_zip']					= "Please enter delivery zip";
+	errLangArr['submit_order_state']				= "Please select delivery state";
+	errLangArr['submit_order_contactphone']			= "Please enter contact phone";
+	errLangArr['submit_order_validphoneno']			= "Please enter valid contact phone";
+	errLangArr['submit_order_validlandline']		= "Please enter valid contact landline";
+	errLangArr['submit_order_email']				= "Please enter contact email";
+	errLangArr['submit_order_invalidemail']			= "Invalid Email Address";
+	errLangArr['submit_order_deliverydate']			= "Please enter delivery date";
+	errLangArr['submit_order_pickupdate']			= "Please select pickup date";
+	errLangArr['submit_order_timehr']				= "Please enter Time";
+	errLangArr['submit_order_timemin']				= "Please enter Time";
+	errLangArr['submit_order_timesess']				= "Please enter Time";
+	errLangArr['submit_order_mailexist']			= "This email id is already exist";
+	
+	//Restaurant Details - Add & Remove favorites
+	errLangArr['res_det_myfav_content_add'] 		= "Add to favorites";
+	errLangArr['res_det_myfav_content_remove'] 		= "Remove from favorites";
+	
+	//ContactUs
+	errLangArr['contact_contactname']			= 'Please enter contact name';
+	errLangArr['conatct_valid_contactname']		= 'Please enter valid contact name';
+	errLangArr['contact_email']					= 'Please enter contact email address';
+	errLangArr['conatct_valid_contactmail']		= 'Please enter valid email address';
+	errLangArr['contact_code']					= 'Please enter security code';
+	errLangArr['contact_valid_code']			= 'Please enter correct security code';
+	
+	
+	//Site Feedback
+	errLangArr['site_feedback_empty'] 				= "Please enter feedback";
+	errLangArr['site_feedback_success_msg'] 		= "Your feedback has been sent successfully";
+	
+	
+	//restaurant details Booking table	
+	errLangArr['booking_numguests']				= 'Please choose number of guests';
+	errLangArr['booking_date']					= 'Please choose booking date';
+	errLangArr['booking_hour']					= 'Please choose booking hours';
+	errLangArr['booking_minutes']				= 'Please choose booking minutes';
+	errLangArr['booking_session']				= 'Please choose booking session';
+	errLangArr['booking_name']					= 'Please enter name';
+	errLangArr['booking_namealpha']				= 'Name should be alphabets';
+	errLangArr['booking_email']					= 'Please enter email';
+	errLangArr['booking_invalidemail']			= 'Invalid email';
+	errLangArr['booking_mobileno']				= 'Please enter your mobile number';
+	errLangArr['booking_invalidmobileno']		= 'Please enter valid mobile number';
+	errLangArr['booking_lessmobileno']			= 'Invalid mobile number';
+	errLangArr['booking_success']				= 'Booked Successfully';
+	
+	//new
+	//common
+	
+	errLangArr['please_enter_your_name']		= "Please enter your Name";
+	errLangArr['please_enter_your_email']		= "Please enter your Email";
+	errLangArr['please_enter_your_valemail']	= "Please enter valid Email";
+	errLangArr['please_enter_your_country']		= "Please enter your Country";
+	errLangArr['please_enter_your_valemail_add']= "Please enter valid Email Address";
+	errLangArr['error_occured']					= "Error Occured";
+	errLangArr['invalide_email_id']				= "Invalid Email Id";
+	errLangArr['fbinvalide_email_id']			= "Invalid Email Id";
+	errLangArr['please_enter_name']				= "Please enter name";
+	errLangArr['please_enter_validname']		= "Please enter valid name";
+	errLangArr['please_enter_email']			= "Please enter email id";
+	errLangArr['please_enter_valid_email']		= "Please enter valid email id";
+	errLangArr['please_enter_country']			= "Please enter country";
+	errLangArr['please_enter_message']			= "Please enter message";
+	errLangArr['please_enter_verify_number']	= "Please enter verify number";
+	errLangArr['please_enter_correct_code']		= "Please enter correct code";
+	errLangArr['your_detail']					= "Your details successfully send.";
+	//customer
+	errLangArr['email_is_exist']				= "This Email id Already Exist";
+	errLangArr['pwd_send_email']				= "Password has been sent to your email address";	
+	errLangArr['email_address_not_reg']			= "This email address not registered";
+	errLangArr['plz_enter_sec_cus_name']		= "Please enter secondary customer name";	
+	errLangArr['plz_enter_sec_cus_address']		= "Please enter secondary customer address";
+	errLangArr['plz_enter_sec_cus_street']		= "Please enter secondary customer street";
+	errLangArr['plz_enter_sec_cus_area']		= "Please enter secondary customer area";
+	errLangArr['plz_enter_sec_cus_city']		= "Please enter secondary customer city";
+	errLangArr['plz_enter_sec_cus_cell']		= "Please enter secondary customer cellphone";	
+	errLangArr['plz_enter_sec_cus_validcell']	= "Please enter valid secondary customer cellphone";
+	errLangArr['plz_enter_landline_number']		= "Please enter valid secondary landline number";
+	errLangArr['sec_address_update_success']	= "Secondary Address has been Updated Successfully";
+	errLangArr['already_review_posted_this_ord']= "Already review posted this order";
+	errLangArr['plz_select_rating']				= "Please select rating";
+	errLangArr['plz_enter_your_message']		= "Please enter your message";	 
+	errLangArr['your_review']					= "Your reviews has been sent successfully";
+	//searchresultgmap
+	errLangArr['geocode']						= "Geocode was not successful for the following reason: ";
+	errLangArr['geocode1']						= "Geocode was not successful for the following reason: ";
+	
+	//auto_suggest
+	errLangArr['select_state']					= "Please select your state";
+	errLangArr['select_city']					= "Please seelct your city";
+	errLangArr['you_can_select_max']			= "You can select maximum ";
+	errLangArr['addons_only']					= " addons only";
+	errLangArr['error_occur']					= "Error Occured";
+	errLangArr['error_occured']					= "Error Occured";
+	errLangArr['error_occured1']				= "Error Occured";
+	//restaurantownermyaccount
+	errLangArr['please_enter_menu_cat']			= "Please enter menu category"
+	errLangArr['please_select_anyone_pizza_si']	= "Please Select any one pizza size";
+	errLangArr['please_enter_small_val']		= "Please enter small value";
+	errLangArr['please_enter_med_val']			= "Please enter medium value";
+	errLangArr['please_enter_large_val']		= "Please enter large value";
+	errLangArr['please_enter_menuprice']		= "Please enter menu price";
+	errLangArr['please_enter_valid_menuprice']	= "Please enter valid menu price";
+	errLangArr['please_enter_valid_menu']		= "Please enter valid menu price";
+	errLangArr['please_enter_slicename']		= "Please enter slice name";
+	errLangArr['please_enter_sliceprice']		= "Please enter slice price";
+	errLangArr['please_enter_valid_sizeprice']	= "Please enter valid size price";
+	errLangArr['please_enter_valid_size']		= "Please enter valid size price";
+	errLangArr['menuname_already_exist']		= "Menu Name Already Exist";
+	errLangArr['menuname_already_exist1']		= "Menu Name Already Exist";
+	errLangArr['please_select_anyone_pizza_si']	= "Please Select any one pizza size";
+	errLangArr['please_enter_small_value']		= "Please enter small value";
+	errLangArr['please_enter_med_value']		= "Please enter medium value";
+	errLangArr['please_enter_large_value']		= "Please enter large value";
+	errLangArr['please_enter_menupri']			= "Please enter menu price";
+	errLangArr['please_enter_valid_menupri']	= "Please enter valid menu price";
+	errLangArr['please_enter_valid_price']		= "Please enter valid menu price";
+	errLangArr['please_enter_editslicename']	= "Please enter slice name";
+	errLangArr['please_enter_editsliceprice']	= "Please enter slice price";
+	errLangArr['please_enter_edit_sizeprice']	= "Please enter valid size price";
+	errLangArr['please_enter_editvalid_size']	= "Please enter valid size price";
+	errLangArr['menuname_already_exist2']		= "Menu Name Already Exist";
+	errLangArr['menuname_already_exist3']		= "Menu Name Already Exist";
+	errLangArr['please_enter_menu_category']	= "Please enter menu category";
+	errLangArr['must_select_atleast_oneserving']= "Must select at least 1 serving cuisines";
+	errLangArr['must_select_one_serving_area']	= "Must select at least 1 serving areas";
+	errLangArr['please_select_monday_opening']	= "Please select monday opening time";
+	errLangArr['please_select_monday_closing']	= "Please select monday closeing time";
+	errLangArr['please_enter_video_content']	= "PLease enter Video content";
+	errLangArr['value_updated_successfully']	= "Value updated successfully";
+	errLangArr['error_occured']					= "Error occured";
+	errLangArr['error_occured1']				= "Error occured";
+	errLangArr['error_occured2']				= "Error occured";
+	errLangArr['please_enter_from_date']		= "Please enter From Date";
+	errLangArr['please_enter_To_date']			= "Please enter To Date";
+	errLangArr['please_upload_format']			= "Please Upload Valid Format(jpg,jpeg,gif)";
+	errLangArr['photo']							= "Photo";
+	errLangArr['deleted_success']				= "Deleted Successfully";	
+	errLangArr['error']							= "error";		
+	errLangArr['error_occured']					= "Error occured";
+	errLangArr['logo_deleted']					= "Logo Deleted Successfully";
+	errLangArr['error1']						= "error";	
+	errLangArr['error2']						= "error";
+	errLangArr['error_occured1']				= "Error occured";	
+	
+	
+	
+	
+	return errLangArr;
+}
