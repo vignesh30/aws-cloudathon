@@ -2,7 +2,7 @@
 
 Problem Statement : To create native web application by using AWS services
 
-Solution :  Nuild a web application with AWS serverless architecture.
+Solution :  Built a web application with AWS serverless architecture.
 
 AWS services used : 
   S3 : Static webpages published through CloudFront
